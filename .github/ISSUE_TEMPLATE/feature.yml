@@ -1,0 +1,37 @@
+name: Funkcia alebo oprava
+description: Konkrétny výsledok pre lokálnu osobnú hru.
+title: ""
+body:
+  - type: textarea
+    id: outcome
+    attributes:
+      label: Výsledok pre používateľa
+      description: Čo potrebuješ urobiť a aký problém to vyrieši?
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Oblasť
+      options:
+        - Mapa poznania
+        - Knižnica a štúdium
+        - Profil a Pracovňa
+        - Lokálne spúšťanie a zálohy
+        - Vývojový postup
+        - Iná existujúca oblasť
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Ako spoznáme dokončenie
+      description: Uveď pozorovateľné kroky a očakávaný výsledok.
+      placeholder: "1. Otvorím…\n2. Urobím…\n3. Zobrazí sa…"
+    validations:
+      required: true
+  - type: textarea
+    id: limits
+    attributes:
+      label: Hranice a súvislosti
+      description: Iba popis alebo syntetická ukážka. Nevkladaj osobné dokumenty, fotografie, zálohy, heslá ani relácie.

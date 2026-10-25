@@ -1,0 +1,32 @@
+const { test } = require('node:test');
+const assert = require('node:assert/strict');
+const M = require('../server/game-model.cjs');
+const fs=require('node:fs'),Module=require('node:module'),path=require('node:path');
+const filename=path.join(__dirname,'../public/goodreads.js');
+const loaded=new Module(filename,module);loaded.filename=filename;loaded._compile(fs.readFileSync(filename,'utf8'),filename);
+const G = loaded.exports;
+test('Goodreads metadata and profile survive edit, save validation and old backups', () => {
+  const s = M.createState();
+  const plan = G.importIntoState(s, M, 'Book Id,Title,Author,Number of Pages,Exclusive Shelf,My Rating,ISBN13\n42,Test book,Test author,200,read,4,9781234567890', { profileUrl:'https://www.goodreads.com/user/show/123', readAsComplete:true });
+  assert.equal(plan.importCount, 1);
+  M.updateBook(s, s.books[0].id, { title:'Changed' });
+  const clean = M.validateState(JSON.parse(JSON.stringify(s)));
+  assert.deepEqual(clean.books[0].goodreads, {id:'42',isbn:'9781234567890',shelf:'read',rating:4});
+  assert.equal(clean.settings.goodreadsUrl,'https://www.goodreads.com/user/show/123');
+  assert.equal(clean.books[0].current,200);
+  assert.equal(M.balance(clean),0);
+  assert.equal(clean.ledger.length,0);
+  delete s.settings.goodreadsUrl;
+  delete s.books[0].goodreads;
+  assert.equal(M.validateState(s).settings.goodreadsUrl,'');
+});
+test('Goodreads metadata rejects injected links, unknown fields and invalid ratings', () => {
+  const s=M.createState();
+  M.addBook(s,{title:'Test',total:10,goodreads:{id:'42',isbn:'',shelf:'read',rating:5}});
+  s.books[0].goodreads.id='42<script>';
+  assert.throws(()=>M.validateState(s));
+  s.books[0].goodreads.id='42';s.books[0].goodreads.rating=6;
+  assert.throws(()=>M.validateState(s));
+  s.books[0].goodreads.rating=5;s.settings.goodreadsUrl='https://www.goodreads.com.evil.test/user/show/123';
+  assert.throws(()=>M.validateState(s));
+});

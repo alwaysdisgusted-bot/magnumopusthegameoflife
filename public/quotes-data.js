@@ -1,0 +1,241 @@
+window.MOQuoteCatalog = [
+  {
+    "id": "text-1",
+    "text": "Celý svet je ustavičným procesom uskutočňovania, formovania konkrétnych podstát. V tom spočíva jeho účel a zmysel.",
+    "author": "Marián Lipták",
+    "sourceNote": "Dynamicko-evolučné poňatie sveta v rámci starovekých myšlienkových systémov, Acta theologica et religionistica 1/2013, s. 100. Výklad Aristotelovej filozofie; nejde o priamy Aristotelov citát.",
+    "authorId": "liptak",
+    "workId": "dynamic-evolution",
+    "section": "s. 100",
+    "sourceURL": "https://www.unipo.sk/sites/default/files/content/73759/ATeR-1_2013.pdf",
+    "verification": "verified"
+  },
+  {
+    "id": "text-2",
+    "text": "Ak má človek jednať, musí byť posadnutý. Ak je človek vedený rozumom, zostane pri myšlienke. Vášeň, poslanie ženie rozum k mysleniu, čo siaha ku koreňom, a sústredenie na detail objavuje všeobecný zákon.",
+    "author": "Autor neurčený",
+    "sourceNote": "Osobný zápis z tvojho podkladu. Autora ani publikovaný prameň sa nepodarilo overiť.",
+    "workId": null,
+    "section": "",
+    "sourceURL": "",
+    "verification": "unverified"
+  },
+  {
+    "id": "text-3",
+    "text": "The public hiss at me, but I cheer myself when in my own house I contemplate the coins in my strong-box.",
+    "author": "Horatius",
+    "sourceNote": "Satiry (Sermones), I.1.66–67. Autor a miesto overené podľa latinského originálu; anglický prekladateľ neurčený. Horatius tu necháva hovoriť bohatého lakomca.",
+    "authorId": "horace",
+    "workId": "satires",
+    "section": "I.1.66–67",
+    "sourceURL": "https://www.thelatinlibrary.com/horace/serm1.shtml",
+    "verification": "verified"
+  },
+  {
+    "id": "text-4",
+    "text": "You need to become the person you needed when you were growing up.",
+    "author": "Jason Louv",
+    "sourceNote": "Parafráza výroku z Duncan Trussell Family Hour, epizóda 611: Jason Louv, 8. apríla 2024. Epizóda overená; sekundárny prepis uvádza „You should become the person that you needed when you were a child but was not there.“ Meno opravené z pôvodného „Jason Lovv“.",
+    "workId": "dtfh-611",
+    "section": "epizóda 611, približne 1:44:17",
+    "sourceURL": "https://open.spotify.com/episode/1bmMZcVWM9rUA4DcqcDpwC",
+    "verification": "paraphrase"
+  },
+  {
+    "id": "text-5",
+    "text": "You control what’s being projected by paying attention to what’s being reflected.",
+    "author": "David Bayer (pravdepodobne)",
+    "sourceNote": "Pravdepodobne A Changed Mind, epizóda 242: The Mirror Principle: What The “Elites” Know That You Were Never Taught, 11. mája 2026. Presná veta sa nachádza v sekundárnom prepise; oficiálna stránka potvrdzuje epizódu a tému, konkrétna veta v zvuku nebola nezávisle overená.",
+    "workId": "changed-mind-242",
+    "section": "epizóda 242, približne 03:01",
+    "sourceURL": "https://davidbayer.com/podcast/episode-242/",
+    "verification": "unverified"
+  },
+  {
+    "id": "text-6",
+    "text": "If you are hungry you will do anything for a piece of bread.",
+    "author": "Kamarát",
+    "sourceNote": "Osobná spomienka z tvojho podkladu; publikovaný prameň sa neuvádza.",
+    "workId": null,
+    "section": "",
+    "sourceURL": "",
+    "verification": "personal"
+  },
+  {
+    "id": "text-7",
+    "text": "Predstavy mysle pozorované samy osebe neobsahujú nijaký omyl, čiže myseľ sa nemýli v tom, čo si predstavuje, ale mýli sa iba v tom zmysle, že nemá ideu, čo by vylúčila existenciu vecí, ktoré si predstavuje ako prítomné.",
+    "author": "Baruch Spinoza",
+    "sourceNote": "Etika, II. časť, tvrdenie 17, poznámka (E2p17s). Autor a miesto overené; slovenské znenie zachované z tvojho zápisu, prekladateľ neurčený.",
+    "authorId": "spinoza",
+    "workId": "ethics",
+    "section": "II.17, poznámka",
+    "sourceURL": "https://www.gutenberg.org/cache/epub/920/pg920-images.html",
+    "verification": "verified"
+  },
+  {
+    "id": "scan-1",
+    "text": "Modalita zasahuje našu predstavu vecí, a teda aj naše emócie, vzťahujúce sa na ne podobným spôsobom ako čas. Takže emócia vzťahujúca sa na vec, ktorú si predstavíme ako nevyhnutnú, je (za rovnakých okolností) silnejšia než tá, ktorú si predstavíme ako možnú alebo pravdepodobnú, keďže predstaviť si niečo ako nevyhnutné znamená tvrdiť existenciu […]",
+    "author": "Diane Steinberg (pravdepodobne)",
+    "sourceNote": "Pravdepodobne Spinoza, Marenčin PT, 2005, preklad Emil Višňovský. Bibliografia knihy overená, konkrétna stránka nezávisle nepotvrdená. Ide o výklad Spinozu. Fotografia končí uprostred vety; chýbajúci koniec označuje […].",
+    "workId": "steinberg-spinoza",
+    "section": "s. 77 podľa fotografie",
+    "sourceURL": "https://m.marencin.sk/?b=b116&e=1",
+    "verification": "unverified"
+  },
+  {
+    "id": "scan-2",
+    "text": "Odpoveď znie, že hoci je každý človek vo svojom konaní plne determinovaný, samotné sprostredkovanie nových ideí, týkajúcich sa toho, ako by mal žiť, môže byť determinujúcim faktorom v jeho následnom správaní. V skutočnosti, ak by bol determinizmus nepravdivý alebo ak by predovšetkým vzdelanie, informácie a nové idey nemali vôbec žiadnu tendenciu ovplyvňovať ľudí alebo by neboli faktorom determinácie ich správania, potom by nemalo žiadny zmysel písať rozpravy s úmyslom ukázať, ako by mali žiť. Ak vyučovanie a výchova majú schopnosť niečo zmeniť, determinizmus musí byť pravdivý.",
+    "author": "Diane Steinberg (pravdepodobne)",
+    "sourceNote": "Pravdepodobne Spinoza, Marenčin PT, 2005, preklad Emil Višňovský. Bibliografia knihy overená, konkrétna stránka nezávisle nepotvrdená. Prepis začína prvou úplnou vetou na fotografii; ide o autorkin výklad Spinozu.",
+    "workId": "steinberg-spinoza",
+    "section": "s. 87 podľa fotografie",
+    "sourceURL": "https://m.marencin.sk/?b=b116&e=1",
+    "verification": "unverified"
+  },
+  {
+    "id": "scan-3",
+    "text": "Keď si ľudia myslia, že sú slobodní, mýlia sa. Táto domnienka sa zakladá len na tom, že sú si vedomí svojich činov, no nepoznajú príčiny, ktoré ich determinujú. Idea ich slobody sa teda zakladá na tom, že nepoznajú príčinu svojich činov.",
+    "author": "Baruch Spinoza",
+    "sourceNote": "Etika, II. časť, tvrdenie 35, poznámka. Autor a miesto overené; slovenské znenie prepísané z fotografie, konkrétny preklad a vydanie neurčené.",
+    "authorId": "spinoza",
+    "workId": "ethics",
+    "section": "II.35, poznámka",
+    "sourceURL": "https://www.gutenberg.org/files/3800/3800-h/3800-h.htm",
+    "verification": "verified"
+  },
+  {
+    "id": "scan-4",
+    "text": "It is not the belly that cannot be satisfied, as people believe, but the false belief about the belly’s having unlimited capacity.",
+    "author": "Epikuros",
+    "sourceNote": "Vatikánske výroky, 59. Autor, dielo a číslo výroku overené; anglické znenie prepísané z fotografie, prekladateľ neurčený.",
+    "authorId": "epicurus",
+    "workId": "vatican-sayings",
+    "section": "59",
+    "sourceURL": "https://monadnock.net/epicurus/vatican-sayings.html",
+    "verification": "verified"
+  },
+  {
+    "id": "scan-5",
+    "text": "It is not the belly that cannot be satisfied, as people believe, but the false belief about the belly’s having unlimited capacity.",
+    "author": "Epikuros",
+    "sourceNote": "Vatikánske výroky, 59. Zvýraznený duplikát citátu z podkladu scan-4; oba záznamy sú zachované. Autor, dielo a číslo výroku overené; prekladateľ neurčený.",
+    "authorId": "epicurus",
+    "workId": "vatican-sayings",
+    "section": "59",
+    "sourceURL": "https://monadnock.net/epicurus/vatican-sayings.html",
+    "verification": "verified"
+  },
+  {
+    "id": "scan-6",
+    "text": "Life is ruined by procrastination, and every one of us dies deep in his affairs.",
+    "author": "Epikuros",
+    "sourceNote": "Vatikánske výroky, 14, posledná veta. Autor, dielo a číslo výroku overené; znenie z fotografie, prekladateľ neurčený.",
+    "authorId": "epicurus",
+    "workId": "vatican-sayings",
+    "section": "14, posledná veta",
+    "sourceURL": "https://monadnock.net/epicurus/vatican-sayings.html",
+    "verification": "verified"
+  },
+  {
+    "id": "scan-7",
+    "text": "Všetko harmonické totiž musí pochádzať z neharmonického, a neharmonické z harmonického.",
+    "author": "Aristoteles",
+    "sourceNote": "Fyzika, I. kniha, 5. kapitola, približne 188b9–15. Autor a miesto overené; vybraná úplná, čitateľná myšlienka zo skreslenej fotografie. Slovenský preklad a vydanie neurčené.",
+    "authorId": "aristotle",
+    "workId": "physics",
+    "section": "I.5, 188b9–15",
+    "sourceURL": "https://classics.mit.edu/Aristotle/physics.1.i.html",
+    "verification": "verified"
+  },
+  {
+    "id": "scan-8",
+    "text": "How unhappy are the lives of men! How purblind their hearts! In what black ignorance and dark peril their small lives are spent! They do not see how little Nature cries out for. She demands only the secession of pain from the body; she requires only that the mind be secluded from anxiety and dread and enjoy feelings of pleasure. We see, then, that few things, all told, are necessary for the body’s well-being—in fact, only those that shut out pain. It may be gratifying at times to have luxuries strewn at our feet, but Nature does not demand them.",
+    "author": "Lucretius",
+    "sourceNote": "De rerum natura (O prírode), II.14–23. Autor a miesto overené podľa latinského originálu. Prepis úplných viet z fotografie vrátane slova „secession“; anglický prekladateľ neurčený. Nedokončený začiatok nasledujúcej vety vynechaný.",
+    "authorId": "lucretius",
+    "workId": "de-rerum-natura",
+    "section": "II.14–23",
+    "sourceURL": "https://www.thelatinlibrary.com/lucretius/lucretius2.shtml",
+    "verification": "verified"
+  },
+  {
+    "id": "scan-9",
+    "text": "The intoxication of the irrational and the vocation of rapture turn a lucid mind away from the absurd. To Chestov reason is useless but there is something beyond reason.",
+    "author": "Albert Camus",
+    "sourceNote": "The Myth of Sisyphus (Mýtus o Sizyfovi), časť Philosophical Suicide. Camusov výklad Leva Šestova (Chestov). Autor a oddiel identifikované podľa textu; prepis zachováva úplné vety z fotografie, konkrétne vydanie neurčené.",
+    "authorId": "camus",
+    "workId": "myth-of-sisyphus",
+    "section": "An Absurd Reasoning → Philosophical Suicide",
+    "sourceURL": "https://www.penguinrandomhouse.com/books/23470/the-myth-of-sisyphus-by-albert-camus/",
+    "verification": "verified"
+  },
+  {
+    "id": "scan-10",
+    "text": "We see, then, that few things, all told, are necessary for the body’s well-being—in fact, only those that shut out pain.",
+    "author": "Lucretius",
+    "sourceNote": "De rerum natura (O prírode), II.20–21. Zvýraznený výrez tej istej pasáže ako scan-8; začiatok celej vety doplnený z tvojho podkladu scan-8. Autor a miesto overené, anglický prekladateľ neurčený.",
+    "authorId": "lucretius",
+    "workId": "de-rerum-natura",
+    "section": "II.20–21",
+    "sourceURL": "https://www.thelatinlibrary.com/lucretius/lucretius2.shtml",
+    "verification": "verified"
+  },
+  {
+    "id": "scan-11",
+    "text": "Because of the very fact that pleasure is our primary and congenital good we do not select every pleasure; there are times when we forgo certain pleasures, particularly when they are followed by too much unpleasantness. Furthermore, we regard certain states of pain as preferable to pleasures, particularly when greater satisfaction results from our having submitted to discomforts for a long period of time. […] It is our duty to judge all such cases by measuring pleasures against pains, with a view to their respective assets and liabilities, inasmuch as we do experience the good as being bad at times and, contrariwise, the bad as being good.",
+    "author": "Epikuros",
+    "sourceNote": "List Menoikeovi, 129–130, zachovaný v Diogenových Životoch, X. kniha. Autor a miesto overené; prekladateľ neurčený. Značka […] zachováva vynechanie už prítomné v tvojom podklade.",
+    "authorId": "epicurus",
+    "workId": "letter-to-menoeceus",
+    "section": "129–130",
+    "sourceURL": "https://monadnock.net/epicurus/letter.html",
+    "verification": "verified"
+  },
+  {
+    "id": "scan-12",
+    "text": "We are firmly convinced that those who need expensive fare least are the ones who relish it most keenly and that a natural way of life is easily procured, while trivialities are hard to come by. Plain foods afford pleasure equivalent to that of a sumptuous diet, provided that the pains of penury are wholly eliminated. Barley bread and water yield the peak of pleasure whenever a person who needs them sets them in front of himself.",
+    "author": "Epikuros",
+    "sourceNote": "List Menoikeovi, 130–131. Autor a miesto overené; úplné vety z hlavnej pasáže fotografie, anglický prekladateľ neurčený. Druhá pasáž na pôvodnom obrázku je Lucretius, De rerum natura II.14–20, už zachovaná v zázname scan-8.",
+    "authorId": "epicurus",
+    "workId": "letter-to-menoeceus",
+    "section": "130–131",
+    "sourceURL": "https://monadnock.net/epicurus/letter.html",
+    "verification": "verified"
+  },
+  {
+    "id": "scan-13",
+    "text": "[…] blinding dark and are fearful of all, so we in the light of day are often terrified by things which are no more to be feared than what children tremble at in the dark and think is going to happen. This darkling terror in the mind must then be routed not by the sun’s rays, not by the bright shafts of day, but by the observation and rational inspection of Nature.",
+    "author": "Lucretius",
+    "sourceNote": "De rerum natura (O prírode), VI.35–41; fotografia označuje širší úsek 6.9–41. Autor a miesto overené; začiatok vety je na fotografii orezaný a označený […]. Anglický prekladateľ neurčený. Horný susedný výrez opakuje Fisherov text zo scan-14.",
+    "authorId": "lucretius",
+    "workId": "de-rerum-natura",
+    "section": "VI.35–41",
+    "sourceURL": "https://www.thelatinlibrary.com/lucretius/lucretius6.shtml",
+    "verification": "verified"
+  },
+  {
+    "id": "scan-14",
+    "text": "Spinoza shows that, far from being an aberrant condition, addiction is the standard state for human beings, who are habitually enslaved into reactive and repetitive behaviors by frozen images (of themselves and the world). Freedom, Spinoza shows, is something that can be achieved only when we can apprehend the real causes of our actions, when we can set aside the ‘sad passions’ that intoxicate and entrance us.",
+    "author": "Mark Fisher",
+    "sourceNote": "Capitalist Realism: Is There No Alternative?, 9. kapitola Marxist Supernanny, s. 73 (2009). Doslovná pasáž overená v knihe. Ide o Fisherov výklad Spinozu. Prepis začína pri „Spinoza shows“, keďže úvodné „Like“ pred slovom „Burroughs“ je na fotografii orezané.",
+    "authorId": "fisher",
+    "workId": "capitalist-realism",
+    "section": "9. kapitola Marxist Supernanny, s. 73 (2009)",
+    "sourceURL": "https://www.collectiveinkbooks.com/zer0-books/our-books/capitalist-realism-new-edition",
+    "verification": "verified"
+  },
+  {
+    "id": "scan-15",
+    "text": "Plato theorized the open compatibility between individual choice and political domination, and depicted democratic subjects who are available to political tyranny or authoritarianism precisely because they are absorbed in a province of choice and need-satisfaction that they mistake for freedom.",
+    "author": "Wendy Brown",
+    "sourceNote": "American Nightmare: Neoliberalism, Neoconservatism, and De-Democratization (2006), článok citovaný v Mark Fisher: Capitalist Realism, 7. kapitola, s. 61 (2009). Presný úsek overený vo Fisherovej knihe s výslovným autorstvom Wendy Brownovej; nejde o Platónov vlastný citát.",
+    "authorId": "brown",
+    "workId": "american-nightmare",
+    "section": "Political Theory 34(6), 2006, s. 690–714",
+    "relatedWorkId": "capitalist-realism",
+    "relatedSection": "7. kapitola, s. 61 (2009)",
+    "relatedVerification": "verified",
+    "sourceURL": "https://journals.sagepub.com/doi/10.1177/0090591706293016",
+    "verification": "verified"
+  }
+];

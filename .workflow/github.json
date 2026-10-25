@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "enabled": true,
+  "repository": "https://github.com/alwaysdisgusted-bot/magnumopusthegameoflife",
+  "requiredVisibility": "public",
+  "sourceOnly": true,
+  "websiteDeployment": false,
+  "automaticMerge": false,
+  "observedVisibility": "public",
+  "authenticatedAccessVerified": true,
+  "status": "user_authorized_public_source_export"
+}

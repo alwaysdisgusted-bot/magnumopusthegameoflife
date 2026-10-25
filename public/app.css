@@ -1,0 +1,282 @@
+.cover-button,.title-button{background:none;border:0;padding:0;color:inherit;text-align:left;cursor:pointer}.cover-button{align-self:start}.title-button:hover{color:var(--gold,#e7bf70)}.generated-cover{display:flex;flex-direction:column;align-items:center;justify-content:space-between;padding:14px 10px;text-align:center;background:linear-gradient(145deg,#384773,#27304a 60%,#1b253b);border:1px solid #cfab61!important;box-shadow:inset 5px 0 #162031,inset 8px 0 #cfab6133,0 6px 20px #0006;color:#e8ce91;gap:12px}.generated-cover>span{font-family:Georgia,serif;font-size:9px;letter-spacing:3px;line-height:1.6}.generated-cover>strong{font-family:Georgia,serif;font-size:15px;line-height:1.3;overflow-wrap:anywhere}.generated-cover>small{font-size:9px;line-height:1.3}.library-tools{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-bottom:20px}.library-tools>.muted{white-space:nowrap;font-size:12px}.book-card{min-width:0}.book-info{min-width:0}.book-title{overflow-wrap:anywhere}.exercise-card>.btn{margin-top:18px}.exercise-rule{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.exercise-card .card-top{margin-bottom:14px}.field-disabled{opacity:.4}.field-disabled input{cursor:not-allowed}.checkbox-label{display:flex!important;align-items:center;gap:9px;margin-top:8px}.checkbox-label input{width:auto!important}.modal-lead{font-family:Georgia,serif;font-size:21px;color:#eadfc5;margin-bottom:20px}.chapter-mark{padding:13px 20px;border-left:1px solid #dbb56755;font-size:11px;letter-spacing:1px;line-height:1.9;color:#d8d0bc;text-align:right}.chapter-mark strong{font:17px Georgia,serif;letter-spacing:0;color:#ebc776}.village-top{background:linear-gradient(180deg,#09262feb,transparent);padding-bottom:40px!important}.village-bottom{position:relative;z-index:2;padding:0 28px 18px}.today-card{display:flex;align-items:center;gap:17px;max-width:800px;margin:0 auto;padding:19px 24px;background:linear-gradient(110deg,#102d35ed,#172c38ed);border:1px solid #d5b66c88;border-radius:8px;box-shadow:0 8px 30px #0006}.today-icon{color:#dfb866;display:flex}.today-card>div{display:flex;flex-direction:column;gap:6px;flex:1}.today-card strong{font:19px Georgia,serif;color:#f0e3c5}.today-card>div>span:last-child{font-size:12px;color:#bfc9be}.today-card .eyebrow{font-size:9px;margin:0}.map-hint{display:flex;align-items:center;justify-content:center;gap:6px;font-size:10px;color:#e8e2d2;letter-spacing:.4px;margin-top:12px;text-shadow:0 1px 3px #000}.map-point{z-index:2}.map-point .point-label{white-space:nowrap}.nav-dot{width:5px;height:5px;border-radius:50%;background:#d8b667;margin-left:auto;box-shadow:0 0 10px #dab86977}.book-card .tag{font-size:10px}.detail-cover.generated-cover{min-height:230px}.history-card{margin-top:24px}.history-card .activity-row:last-child{border-bottom:0}.recovery{margin-bottom:24px}.page:has(.wizard-display){background:radial-gradient(ellipse at 30% 10%,#32354a88,transparent 60%)}body[data-outfit=rose] #avatar img{filter:hue-rotate(45deg)}body[data-outfit=forest] #avatar img{filter:hue-rotate(235deg)}body[data-outfit=midnight] #avatar img{filter:brightness(.75) saturate(.8)}.outfit-rose{filter:hue-rotate(45deg)}.outfit-forest{filter:hue-rotate(235deg)}.outfit-midnight{filter:brightness(.75) saturate(.8)}
+@media(min-width:1400px){.library-panel,.gym-panel{max-width:1140px;margin-left:auto;margin-right:auto;width:100%}.book-card{padding:28px!important;gap:28px!important}.book-cover{width:118px!important;min-height:170px}.book-title{font-size:24px!important}}
+@media(max-width:1000px){.library-tools{align-items:stretch;flex-direction:column;gap:10px}.chapter-mark{display:none}.today-card{padding:16px}.today-card>.btn{max-width:130px}.village-bottom{padding:0 16px 18px}.book-card{gap:18px}}
+@media(max-width:600px){.today-card{align-items:flex-start;flex-wrap:wrap}.today-card>.btn{margin-left:42px;max-width:none}.today-card strong{font-size:17px}.today-icon{margin-top:5px}.village-title{font-size:30px!important}.village-subtitle{font-size:12px!important}.map-point .point-label{font-size:10px}.map-point .point-icon svg{width:17px;height:17px}.map-container{min-height:430px!important}.scene.library,.scene.gym{background-attachment:fixed}.book-cover{width:84px!important}.generated-cover{padding:12px 8px}.generated-cover>strong{font-size:12px}.generated-cover>svg{width:30px}.generated-cover>small{font-size:8px}.book-card .btn.small{padding:9px 10px;font-size:11px}.book-card .progress-meta{font-size:10px}.book-info .eyebrow{font-size:8px}.detail-layout{grid-template-columns:90px 1fr!important}.detail-cover{max-width:90px!important}.detail-layout .card-actions{flex-direction:column;align-items:stretch}}
+#avatar img{filter:none!important}.library .scene-footer,.gym .scene-footer{justify-content:flex-end;font-size:12px;color:#f0e3cb;line-height:1.7;gap:8px;text-shadow:0 1px 4px #000}.library .scene-footer>svg,.gym .scene-footer>svg{flex-shrink:0}@media(min-width:761px) and (max-height:1000px){.sidebar .brand{padding-bottom:10px}.sidebar .brand-title{font-size:27px}.sidebar .brand-title>span{font-size:34px}.sidebar .brand-subtitle{margin-top:7px}.sidebar .brand-ornament{height:16px}.sidebar .player{padding-bottom:6px}.sidebar .avatar{width:57px;height:69px}.sidebar .wallet{margin-bottom:10px}.sidebar .wallet-item{min-height:34px}.sidebar .nav-heading{margin-bottom:7px}.sidebar #nav{gap:3px}.sidebar .nav-item{min-height:38px;padding-top:5px;padding-bottom:5px}.sidebar .sidebar-bottom{padding-top:8px}.sidebar .sidebar-bottom p{display:none}.sidebar .sidebar-utility{margin-bottom:9px}.sidebar .sidebar-rule{margin-bottom:10px}}
+
+.library-nav-group { flex-shrink: 0; }
+.library-nav-heading { display: flex; gap: 4px; }
+.library-nav-heading > .nav-item { flex: 1; min-width: 0; width: auto; }
+.library-menu-toggle { width: 34px; min-height: 43px; flex: none; border: 1px solid #b0904d60; border-radius: 7px; background: #163841; color: #f1d793; cursor: pointer; }
+.library-submenu { display: none; padding: 4px 0 4px 12px; }
+.library-submenu .nav-item { margin-top: 4px; min-height: 40px; }
+.library-nav-group:focus-within:not(.is-collapsed) > .library-submenu,
+.library-nav-group.is-expanded > .library-submenu { display: block; }
+@media (hover: hover) {
+  .library-nav-group:hover:not(.is-collapsed) > .library-submenu { display: block; }
+}
+.library-menu-toggle:focus-visible, .library-submenu a:focus-visible { outline: 3px solid #f5d78d; outline-offset: 2px; }
+.library-entrance { max-width: 1500px; margin: 0 auto; }
+.library-room-art { position: relative; width: 100%; isolation: isolate; border: 1px solid #b18a58; border-radius: 12px; overflow: hidden; }
+.library-room-art > img { display: block; width: 100%; height: auto; }
+.library-room-point { position: absolute; left: var(--point-x); top: var(--point-y); transform: translate(-50%, -50%); display: flex; flex-direction: column; align-items: center; gap: 4px; text-align: center; color: #fff0ce; text-decoration: none; min-width: 44px; min-height: 44px; max-width: 29%; border-radius: 8px; }
+.library-room-point > span { display: grid; place-items: center; width: 44px; height: 44px; flex: none; border: 2px solid #edca82; border-radius: 50%; background: #241e32ee; box-shadow: 0 0 0 6px #eac77e33, 0 3px 14px #000b; }
+.library-room-point strong { padding: 5px 9px; border-radius: 6px; background: #201b2ff2; border: 1px solid #c4a16b; font-size: clamp(11px, 1.3vw, 16px); line-height: 1.3; }
+.library-room-point:is(:hover, :focus-visible) { color: white; outline: 3px solid #ffe0a0; outline-offset: 5px; }
+.library-room-point:is(:hover, :focus-visible) > span { background: #634977; }
+@media (max-width: 500px) {
+  .library-room-point { gap: 2px; }
+  .library-room-point strong { padding: 4px; font-size: 10px; }
+}
+
+/* Illustrated rooms: keep the artwork open and place controls at its edges. */
+.illustrated-room {
+  --room-art: none;
+  --room-panel: rgba(23, 38, 48, .84);
+  min-height: calc(100svh - 40px);
+  background: #142731;
+}
+.illustrated-room.meditation-page { --room-art: url("assets/meditation.png"); }
+.illustrated-room.gallery-page { --room-art: url("assets/gallery.png"); --room-panel: rgba(40, 33, 49, .85); }
+.illustrated-room.farm-page { --room-art: url("assets/farm.png"); --room-panel: rgba(30, 47, 43, .85); }
+.illustrated-room::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0 0 auto;
+  height: max(740px, calc(100svh - 40px));
+  pointer-events: none;
+  background-image: linear-gradient(180deg, transparent 76%, #142731), var(--room-art);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.illustrated-room > .scene-inner {
+  min-height: calc(100svh - 42px);
+  background: linear-gradient(180deg, rgba(11, 25, 34, .64), rgba(11, 25, 34, .04) 160px, rgba(11, 25, 34, .02) 70%, rgba(11, 25, 34, .19));
+}
+.illustrated-room .page-header { align-items: flex-start; margin-bottom: 17px; }
+.illustrated-room .page-title { text-shadow: 0 2px 18px #0b1429, 0 1px 3px #0b1429; }
+.illustrated-room .page-subtitle { max-width: 530px; color: #f0e7d5; text-shadow: 0 1px 5px #0b1429; }
+.illustrated-room .eyebrow { color: #f0d697; text-shadow: 0 1px 5px #0b1429; }
+.illustrated-room .content-panel,
+.illustrated-room .project-card,
+.illustrated-room .animal-card {
+  background: var(--room-panel);
+  backdrop-filter: blur(9px);
+  border-color: rgba(223, 199, 153, .43);
+  box-shadow: 0 8px 25px #07162126, inset 0 1px 0 #f0e9d20b;
+}
+.illustrated-room .content-panel { margin-top: 0; padding: 22px; }
+.illustrated-room .content-panel > p { color: #d5d9cb; font-size: 12px; line-height: 1.8; }
+.illustrated-room .stats-strip { background: rgba(20, 39, 48, .83); backdrop-filter: blur(8px); border-color: rgba(222, 194, 139, .39); margin: 4px 0 17px; }
+.illustrated-room .stat { display: flex; align-items: center; gap: 10px; padding: 12px 17px; min-width: 0; flex: 1; }
+.illustrated-room .stat > svg { color: #d5bf8f; width: 19px; height: 19px; }
+.illustrated-room .stat .value { color: #f0dca7; font: 22px/1.15 Georgia, serif; white-space: nowrap; }
+.illustrated-room .stat .label { color: #c0cbc5; font-size: 9px; margin-top: 5px; }
+.illustrated-room .content-panel .empty-state { padding: 20px 12px; background: transparent; border: 0; }
+.illustrated-room .content-panel .empty-state h2 { font-size: 24px; }
+.illustrated-room .content-panel .empty-state p { color: #cdd2c8; margin-bottom: 18px; }
+.illustrated-room .content-panel .empty-state .empty-icon { width: 49px; height: 49px; }
+.illustrated-room .content-panel .empty-state .empty-icon svg { width: 25px; height: 25px; }
+
+/* The tree and its meditating wizard remain on the open left side. */
+.illustrated-room.meditation-page > .scene-inner > .stats-strip,
+.illustrated-room.meditation-page > .scene-inner > .grid {
+  width: min(46%, 510px);
+  margin-left: auto;
+}
+.illustrated-room.meditation-page > .scene-inner > .grid { grid-template-columns: 1fr; gap: 14px; }
+.illustrated-room.meditation-page .content-panel > .empty-icon { float: left; width: 37px; height: 37px; margin: 0 13px 7px 0; }
+.illustrated-room.meditation-page .content-panel > .empty-icon svg { width: 20px; height: 20px; }
+.illustrated-room.meditation-page .section-title { margin-bottom: 12px; font-size: 21px; }
+.illustrated-room.meditation-page .content-panel > .progress-meta { clear: both; }
+.illustrated-room.meditation-page .activity-row { padding: 10px 0; }
+.illustrated-room.meditation-page .activity-icon { width: 29px; height: 29px; }
+.illustrated-room.meditation-page .activity-amount { display: inline-flex; align-items: center; gap: 4px; font-size: 11px; }
+.illustrated-room.meditation-page .activity-amount svg { width: 14px; height: 14px; }
+
+/* Works collect on the left, leaving the gallery wizard in sight. */
+.illustrated-room.gallery-page > .scene-inner > .stats-strip { width: min(62%, 720px); }
+.illustrated-room.gallery-page > .scene-inner > .grid,
+.illustrated-room.gallery-page > .scene-inner > .content-panel {
+  width: min(62%, 720px);
+}
+.illustrated-room.gallery-page .project-card { padding: 21px; }
+.illustrated-room.gallery-page .project-card h2 { font-size: 23px; line-height: 1.3; overflow-wrap: anywhere; }
+.illustrated-room.gallery-page .project-card .card-top { margin-bottom: 16px; }
+.illustrated-room.gallery-page .project-card .empty-icon { width: 37px; height: 37px; margin: 0 auto 0 0; }
+.illustrated-room.gallery-page .project-card .empty-icon svg { width: 20px; height: 20px; }
+.illustrated-room.gallery-page .project-card .card-actions { gap: 7px; }
+.illustrated-room.gallery-page .project-card .card-actions .btn { padding: 8px 11px; font-size: 11px; }
+
+/* A compact upper shelf preserves the farm's lower field of animals. */
+.illustrated-room.farm-page > .scene-inner > .content-panel { width: min(43%, 460px); }
+.illustrated-room.farm-page > .scene-inner > .grid { width: min(88%, 900px); margin-top: 7px; gap: 13px; }
+.illustrated-room.farm-page .animal-card { padding: 17px 15px; gap: 6px; }
+.illustrated-room.farm-page .animal-portrait { min-height: 70px; }
+.illustrated-room.farm-page .animal-portrait svg { width: 66px; height: 66px; }
+.illustrated-room.farm-page .animal-card h2 { font: 21px/1.3 Georgia, serif; margin: 0; }
+.illustrated-room.farm-page .animal-card .muted { color: #ccd3c3; font-size: 10px; margin: 0; }
+.illustrated-room.farm-page .animal-card .tag { align-self: center; font-size: 9px; color: #d4d7c2; }
+.illustrated-room.farm-page .animal-card .tag svg { vertical-align: text-bottom; width: 12px; height: 12px; }
+
+@media (max-width: 1190px) {
+  .illustrated-room { min-height: calc(100svh - 28px); }
+  .illustrated-room > .scene-inner { min-height: calc(100svh - 30px); }
+  .illustrated-room .page-header { flex-wrap: wrap; gap: 15px; }
+  .illustrated-room .content-panel { padding: 19px; }
+  .illustrated-room.meditation-page > .scene-inner > .stats-strip,
+  .illustrated-room.meditation-page > .scene-inner > .grid { width: min(49%, 440px); }
+  .illustrated-room .stat { padding: 11px 12px; gap: 7px; }
+  .illustrated-room .stat > svg { display: none; }
+  .illustrated-room .stat .value { font-size: 21px; }
+  .illustrated-room.gallery-page > .scene-inner > .stats-strip,
+  .illustrated-room.gallery-page > .scene-inner > .grid,
+  .illustrated-room.gallery-page > .scene-inner > .content-panel { width: 65%; }
+  .illustrated-room.gallery-page > .scene-inner > .grid { grid-template-columns: 1fr; }
+  .illustrated-room.gallery-page .project-card { padding: 18px; }
+  .illustrated-room.farm-page > .scene-inner > .content-panel { width: min(55%, 420px); }
+  .illustrated-room.farm-page > .scene-inner > .grid { width: 100%; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (max-width: 970px) and (min-width: 761px) {
+  .illustrated-room.meditation-page > .scene-inner > .stats-strip,
+  .illustrated-room.meditation-page > .scene-inner > .grid { width: 54%; }
+  .illustrated-room.meditation-page .stat { padding: 10px 8px; }
+  .illustrated-room.meditation-page .stat .value { font-size: 18px; }
+  .illustrated-room.meditation-page .stat .label { font-size: 8px; }
+  .illustrated-room.farm-page > .scene-inner > .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); width: 66%; }
+  .illustrated-room.farm-page .animal-card .muted { display: none; }
+}
+@media (max-width: 760px) {
+  .illustrated-room { min-height: calc(100svh - 78px); }
+  .illustrated-room::after { height: 700px; }
+  .illustrated-room > .scene-inner { min-height: calc(100svh - 80px); }
+  .illustrated-room .page-header { margin-bottom: 15px; }
+  .illustrated-room .page-title { font-size: 34px; }
+  .illustrated-room .page-subtitle { font-size: 12px; }
+  .illustrated-room.meditation-page::after { background-position: 38% top; }
+  .illustrated-room.gallery-page::after { background-position: 86% top; }
+  .illustrated-room.farm-page::after { background-position: 43% top; }
+  .illustrated-room.meditation-page > .scene-inner > .stats-strip,
+  .illustrated-room.gallery-page > .scene-inner > .stats-strip { width: 100%; }
+  .illustrated-room.meditation-page > .scene-inner > .grid,
+  .illustrated-room.gallery-page > .scene-inner > .grid,
+  .illustrated-room.gallery-page > .scene-inner > .content-panel,
+  .illustrated-room.farm-page > .scene-inner > .grid,
+  .illustrated-room.farm-page > .scene-inner > .content-panel { width: 100%; }
+  .illustrated-room.meditation-page > .scene-inner > .grid { margin-top: 260px; }
+  .illustrated-room.gallery-page > .scene-inner > .grid,
+  .illustrated-room.gallery-page > .scene-inner > .content-panel { margin-top: 265px; }
+  .illustrated-room.farm-page > .scene-inner > .grid,
+  .illustrated-room.farm-page > .scene-inner > .content-panel { margin-top: 430px; }
+  .illustrated-room .stats-strip { flex-shrink: 0; }
+  .illustrated-room .stat { padding: 12px 15px; }
+  .illustrated-room .stat > svg { display: block; }
+  .illustrated-room .content-panel { padding: 21px; }
+  .illustrated-room.gallery-page > .scene-inner > .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .illustrated-room.farm-page > .scene-inner > .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (max-width: 480px) {
+  .illustrated-room { min-height: calc(100svh - 72px); }
+  .illustrated-room > .scene-inner { min-height: calc(100svh - 74px); padding: 22px 15px; }
+  .illustrated-room .page-title { font-size: 32px; }
+  .illustrated-room .stat { padding: 11px 12px; }
+  .illustrated-room .stat > svg { display: none; }
+  .illustrated-room .stat .value { font-size: 21px; }
+  .illustrated-room .stat .label { font-size: 8px; }
+  .illustrated-room.meditation-page > .scene-inner > .grid { margin-top: 220px; }
+  .illustrated-room.gallery-page > .scene-inner > .grid,
+  .illustrated-room.gallery-page > .scene-inner > .content-panel { margin-top: 230px; }
+  .illustrated-room.farm-page > .scene-inner > .grid,
+  .illustrated-room.farm-page > .scene-inner > .content-panel { margin-top: 400px; }
+  .illustrated-room.gallery-page > .scene-inner > .grid,
+  .illustrated-room.farm-page > .scene-inner > .grid { grid-template-columns: 1fr; }
+  .illustrated-room .content-panel { padding: 20px; }
+  .illustrated-room .content-panel .empty-state { padding: 12px 0; }
+  .illustrated-room .content-panel .empty-state h2 { font-size: 23px; }
+  .illustrated-room.farm-page .animal-card { display: grid; grid-template-columns: 68px 1fr; gap: 4px 15px; align-items: center; text-align: left; }
+  .illustrated-room.farm-page .animal-portrait { grid-row: 1 / 4; }
+  .illustrated-room.farm-page .animal-card .tag { justify-self: start; }
+}
+
+/* Bank: the central vault stays open between the summary and the ledger. */
+.illustrated-room.bank-page {
+  --room-art: url("assets/bank.png");
+  --room-panel: rgba(23, 36, 48, .89);
+}
+.illustrated-room.bank-page::after { background-position: center top; }
+.illustrated-room.bank-page > .scene-inner > .stats-strip {
+  width: fit-content;
+  max-width: 100%;
+  margin-bottom: 0;
+}
+.illustrated-room.bank-page .stat { min-width: 190px; padding: 13px 20px; }
+.illustrated-room.bank-page .stat .value { white-space: normal; overflow-wrap: anywhere; }
+.illustrated-room.bank-page .finance-grid {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 12px;
+  margin: clamp(300px, 42svh, 520px) 0 12px;
+}
+.illustrated-room.bank-page .finance-card {
+  min-width: 0;
+  padding: 20px 17px 16px;
+  border-color: rgba(219, 190, 133, .4);
+  background: rgba(21, 38, 49, .91);
+  backdrop-filter: blur(9px);
+  box-shadow: 0 6px 20px #07162126;
+}
+.illustrated-room.bank-page .finance-card > .label { display: block; margin-bottom: 8px; color: #c1c7bd; font-size: 10px; }
+.illustrated-room.bank-page .finance-card > .value { display: block; font-size: clamp(19px, 1.5vw, 27px); line-height: 1.3; letter-spacing: -.02em; overflow-wrap: anywhere; }
+.illustrated-room.bank-page .finance-card > .value.negative { color: #dda59b; }
+.illustrated-room.bank-page .finance-card > .muted { margin: 10px 0 0; font-size: 10px; line-height: 1.6; color: #aebbb9; }
+.illustrated-room.bank-page > .scene-inner > .form-hint {
+  align-self: flex-start;
+  color: #c9d0c6;
+  background: rgba(18, 36, 47, .78);
+  border: 1px solid #c5b28226;
+  border-radius: 5px;
+  padding: 8px 11px;
+  margin: 0;
+}
+.illustrated-room.bank-page > .scene-inner > .page-header:not(:first-child) {
+  align-items: center;
+  gap: 20px;
+  padding: 22px 23px;
+  margin: 27px 0 17px;
+  border: 1px solid #d8c08c30;
+  border-radius: 9px;
+  background: rgba(20, 35, 47, .94);
+}
+.illustrated-room.bank-page > .scene-inner > .page-header:not(:first-child) .section-title { margin-bottom: 7px; }
+.illustrated-room.bank-page > .scene-inner > .page-header:not(:first-child) .muted { margin: 0; }
+.illustrated-room.bank-page > .scene-inner > .grid .card { background: #1b303ded; border-color: #c4b2843b; }
+.illustrated-room.bank-page > .scene-inner > .grid .card h2 { overflow-wrap: anywhere; }
+.illustrated-room.bank-page > .scene-inner > .content-panel { background: #1b303ded; }
+
+@media (min-width: 761px) {
+  .illustrated-room.gallery-page::after { background-position: right center; }
+}
+@media (max-width: 1300px) {
+  .illustrated-room.bank-page .finance-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .illustrated-room.bank-page .finance-card > .value { font-size: 24px; }
+}
+@media (max-width: 760px) {
+  .illustrated-room.bank-page::after { height: 700px; background-position: 50% top; }
+  .illustrated-room.bank-page > .scene-inner > .stats-strip { width: 100%; }
+  .illustrated-room.bank-page .stat { min-width: 0; padding: 12px 15px; }
+  .illustrated-room.bank-page .stat .value { font-size: 22px; }
+  .illustrated-room.bank-page .finance-grid { margin-top: 310px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .illustrated-room.bank-page .finance-card { padding: 17px 15px; }
+  .illustrated-room.bank-page > .scene-inner > .page-header:not(:first-child) { padding: 20px; }
+}
+@media (max-width: 480px) {
+  .illustrated-room.bank-page .stat { padding: 11px 12px; }
+  .illustrated-room.bank-page .stat .value { font-size: 20px; }
+  .illustrated-room.bank-page .finance-grid { margin-top: 285px; gap: 10px; }
+  .illustrated-room.bank-page .finance-card { padding: 16px 12px; }
+  .illustrated-room.bank-page .finance-card > .value { font-size: 22px; }
+  .illustrated-room.bank-page > .scene-inner > .form-hint { font-size: 9px; }
+  .illustrated-room.bank-page > .scene-inner > .page-header:not(:first-child) { align-items: flex-start; }
+}
+.today-card{position:relative;padding-right:58px}.welcome-close{position:absolute;right:9px;top:9px;display:grid;place-items:center;width:34px;height:34px;padding:0;border:1px solid #d9ae5455;border-radius:6px;background:#102c32;color:#eed8ab;cursor:pointer}.welcome-close:hover{background:#345054;border-color:#f2d694}.welcome-close:focus-visible,.welcome-restore:focus-visible{outline:2px solid #f2d694;outline-offset:3px}.welcome-restore{display:flex;align-items:center;gap:7px;margin:0 auto;padding:8px 12px;border:1px solid #d9ae5466;border-radius:6px;background:#102c32dd;color:#eed8ab;font:inherit;font-size:11px;cursor:pointer}.welcome-restore:hover{background:#345054}@media(max-width:1000px){.today-card{padding-right:54px}}

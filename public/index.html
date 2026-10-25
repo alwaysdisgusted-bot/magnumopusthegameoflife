@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#102c32">
+  <meta name="description" content="Tvoja čarovná dedinka, v ktorej každodenné pokroky ožívajú. Osobná hra Magnum Opus — The Game of Life.">
+  <title>Magnum Opus · The Game of Life</title>
+  <link rel="icon" type="image/svg+xml" href="assets/wizard.svg">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="app.css?v=library-room1">
+  <link rel="stylesheet" href="auth.css?v=0.2.0">
+  <link rel="stylesheet" href="academy.css?v=0.2.0">
+  <link rel="stylesheet" href="quotes.css?v=0.4.2.1">
+  <link rel="stylesheet" href="quote-authors.css?v=0.4.2">
+  <link rel="stylesheet" href="desk.css?v=workbench1">
+  <link rel="stylesheet" href="calendar.css?v=0.4.0">
+  <link rel="stylesheet" href="study.css?v=0.3.0">
+  <link rel="stylesheet" href="knowledge.css?v=local1">
+  <link rel="stylesheet" href="knowledge-reader.css?v=local1">
+  <link rel="stylesheet" href="knowledge-portal.css?v=local1">
+  <link rel="stylesheet" href="knowledge-library.css?v=library-room1">
+  <link rel="stylesheet" href="knowledge-source-navigation.css?v=local1">
+  <link rel="stylesheet" href="village-layout.css?v=0.3.1">
+  <link rel="stylesheet" href="daynotes.css?v=0.4.1">
+  <link rel="stylesheet" href="hydration.css?v=0.4.3">
+  <link rel="stylesheet" href="desktop.css?v=0.4.4">
+  <link rel="stylesheet" href="library-categories.css?v=local1">
+  <link rel="stylesheet" href="local-profile.css?v=local1">
+  <link rel="stylesheet" href="profile-windows.css?v=3">
+  <link rel="stylesheet" href="learning.css?v=1">
+  <script src="knowledge-system/catalog.js?v=1" defer></script>
+  <script src="model.js?v=reading1" defer></script>
+  <script src="knowledge-system/store.js" defer></script>
+  <script src="learning-clock.js?v=1" defer></script>
+  <script src="learning.js?v=1" defer></script>
+  <script src="desk-model.js?v=workbench1" defer></script>
+  <script src="desk-vector.js?v=workbench1" defer></script>
+  <script src="study-model.js?v=0.3.0" defer></script>
+  <script src="extras.js?v=local1" defer></script>
+  <script src="auth.js?v=reading1" defer></script>
+  <script src="academy.js?v=workbench1" defer></script>
+  <script src="quotes-data.js?v=0.4.2" defer></script>
+  <script src="quote-authors.js?v=0.4.2" defer></script>
+  <script src="quote-sources.js?v=0.4.2" defer></script>
+  <script src="quotes.js?v=0.4.2" defer></script>
+  <script src="desk.js?v=workbench1" defer></script>
+  <script src="grimoire-workbench.js?v=library-room1" defer></script>
+  <script src="calendar.js?v=0.4.0" defer></script>
+  <script src="namedays.js?v=0.4.0" defer></script>
+  <script src="daynotes.js?v=0.4.1" defer></script>
+  <script src="ocr.js?v=0.3.0" defer></script>
+  <script src="study.js?v=0.3.0" defer></script>
+  <script src="knowledge-model.js?v=local1" defer></script>
+  <script src="knowledge-extract.js?v=local1" defer></script>
+  <script src="knowledge-reader.js?v=local1" defer></script>
+  <script src="knowledge.js?v=local1" defer></script>
+  <script src="knowledge-portal.js?v=local1" defer></script>
+  <script src="knowledge-library.js?v=library-room1" defer></script>
+  <script src="knowledge-game-search.js?v=local1" defer></script>
+  <script src="knowledge-source-navigation.js?v=local1" defer></script>
+  <script src="goodreads.js?v=0.3.0" defer></script>
+  <link rel="stylesheet" href="social.css?v=0.4.1">
+  <script src="social.js?v=0.4.1" defer></script>
+  <link rel="stylesheet" href="showcase.css?v=0.4.2">
+  <script src="showcase.js?v=0.4.2" defer></script>
+  <script src="hydration.js?v=0.4.3" defer></script>
+  <script src="desktop.js?v=0.4.4" defer></script>
+  <script src="library-categories.js?v=local1" defer></script>
+  <script src="profile-windows.js?v=5" defer></script>
+  <script src="app.js?v=standalone-desk1" defer></script>
+  <link rel="stylesheet" href="opus-theme.css?v=1">
+</head>
+<body class="auth-locked">
+  <a class="skip-link" href="#main">Preskočiť na obsah</a>
+  <header class="village-crown" aria-label="Magnum Opus">
+    <a class="brand" href="#village" aria-label="Magnum Opus — návrat do dedinky">
+      <span class="brand-ornament" aria-hidden="true">✧ <span>✦</span> ✧</span>
+      <span class="brand-title">MAGNUM <span>OPUS</span></span>
+      <span class="brand-subtitle">THE GAME OF LIFE</span>
+    </a>
+  </header>
+  <header class="mobile-bar">
+    <button id="mobile-toggle" class="icon-btn" type="button" aria-label="Otvoriť menu" aria-expanded="false" aria-controls="sidebar">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+    </button>
+    <a class="mobile-brand" href="#village">MAGNUM <span>OPUS</span></a>
+    <span class="mobile-spark" aria-hidden="true">✦</span>
+  </header>
+  <div class="sidebar-overlay" aria-hidden="true"></div>
+  <aside id="sidebar" class="sidebar" aria-label="Hlavné menu">
+    <div class="player">
+      <button id="avatar" class="avatar" type="button" aria-label="Otvoriť môj profil">
+        <span class="avatar-glow" aria-hidden="true"></span>
+        <img src="assets/wizard.svg" alt="Tvoj čarodej" width="88" height="104">
+        <span class="avatar-star" aria-hidden="true">✦</span>
+      </button>
+      <div class="player-info"><span class="player-caption">TVÔJ ČARODEJ</span><strong id="profile-name">Čarodej</strong><span class="player-rank">Učeň vlastného života</span></div>
+    </div>
+    <div class="wallet" aria-label="Herné odmeny">
+      <div class="wallet-item"><span class="coin-symbol" aria-hidden="true">♛</span><strong id="coin-count">0</strong><span class="wallet-label">korún</span></div>
+      <div class="wallet-item powder"><span class="powder-symbol" aria-hidden="true">✧</span><strong id="powder-count">0</strong><span class="wallet-label">prášok</span></div>
+    </div>
+    <p class="nav-heading">TVOJA DEDINKA <span aria-hidden="true">✧</span></p>
+    <nav id="nav" aria-label="Miesta v dedinke"></nav>
+    <div class="sidebar-bottom">
+      <div id="account-controls"></div>
+      <button type="button" class="sidebar-utility" data-action="navigate" data-view="settings"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 3v12m-4-4 4 4 4-4M4 16v5h16v-5"/></svg><span>Nastavenia a záloha</span></button>
+      <div class="sidebar-rule" aria-hidden="true"><span>✦</span></div>
+      <p>Veľké dielo sa tvorí<br><em>malými krokmi.</em></p>
+      <span class="version"><span class="status-dot" aria-hidden="true"></span> TVOJ LOKÁLNY SVET <span>v0.5.0-local</span></span>
+    </div>
+  </aside>
+  <main id="main" tabindex="-1">
+    <section class="scene village loading-scene" aria-busy="true" aria-label="Načítava sa tvoja dedinka">
+      <div class="scene-vignette"></div>
+      <div class="loading-message"><span class="loading-sigil" aria-hidden="true">✦</span><p class="eyebrow">TVOJ PRÍBEH SA ZAČÍNA</p><h1>Vitaj v Magnum Opus</h1><p>Prebúdzame tvoju čarovnú dedinku…</p></div>
+    </section>
+    <noscript><p class="notice">Na otvorenie hry potrebuješ v prehliadači povoliť JavaScript.</p></noscript>
+  </main>
+  <section id="knowledge-library-host" class="knowledge-library-host" hidden aria-label="Knižnica poznania">
+    <p id="knowledge-library-context" class="knowledge-library-context" hidden></p>
+    <p id="knowledge-library-status" class="knowledge-library-status" hidden></p>
+    <iframe id="knowledge-library-grimoire-frame" title="Osobný Grimoár Magnum Opus Knowledge" loading="lazy" referrerpolicy="same-origin" sandbox="allow-scripts allow-same-origin allow-forms allow-downloads allow-popups"></iframe>
+    <iframe id="knowledge-library-tree-frame" title="Mapa stromu a pojmov" loading="lazy" referrerpolicy="same-origin" sandbox="allow-scripts allow-same-origin allow-forms"></iframe>
+  </section>
+  <div id="toast" class="toast" role="status" aria-live="polite" aria-atomic="true"></div>
+  <dialog id="modal" class="modal" aria-labelledby="modal-title">
+    <form id="modal-form" novalidate>
+      <div class="modal-header"><div><p class="eyebrow">MAGNUM OPUS</p><h2 id="modal-title">Nová kapitola</h2></div><button type="button" class="icon-btn modal-close" data-close-modal aria-label="Zavrieť"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button></div>
+      <div id="modal-body" class="modal-body"></div>
+      <div class="modal-footer"><button type="button" class="btn secondary" data-close-modal>Zrušiť</button><button type="submit" id="modal-save" class="btn primary">Uložiť</button></div>
+    </form>
+  </dialog>
+</body>
+</html>

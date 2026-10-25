@@ -1,0 +1,51 @@
+name: Source checks
+
+on:
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      module:
+        description: Module id from .workflow/modules.json
+        required: true
+        default: workflow
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: source-checks-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  source-checks:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      CI: 'true'
+      SELECTED_MODULE: ${{ inputs.module || 'workflow' }}
+    steps:
+      - name: Read source checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Set up Node.js
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '24'
+          package-manager-cache: false
+      - name: Verify source contains no local data or credentials
+        run: node scripts/check-source-boundaries.mjs
+      - name: Validate selected module
+        run: |
+          node --input-type=module <<'NODE'
+          import { readFileSync } from 'node:fs';
+          const config = JSON.parse(readFileSync('.workflow/modules.json', 'utf8'));
+          if (!Object.hasOwn(config.modules, process.env.SELECTED_MODULE)) {
+            throw new Error('Choose a module id from .workflow/modules.json.');
+          }
+          NODE
+      - name: Install locked dependencies
+        run: npm ci --no-audit --no-fund
+      - name: Check selected module, types, and build
+        run: node scripts/development-workflow.mjs check --module "$SELECTED_MODULE" --types --build

@@ -1,0 +1,648 @@
+{
+  "version": 1,
+  "maxTestExecutions": 100,
+  "modules": {
+    "workflow": {
+      "name": "Spolupráca, odovzdanie zmien a ochrana zdrojov",
+      "paths": [
+        ".workflow",
+        ".github",
+        "scripts/development-workflow.mjs",
+        "scripts/check-source-boundaries.mjs",
+        "scripts/prepare-source-handoff.mjs",
+        "tests/development-workflow.test.cjs",
+        "tests/source-boundaries.test.cjs",
+        "tests/source-handoff.test.cjs",
+        "docs/WORKFLOW.md",
+        "docs/MODULES.md",
+        "Spolupraca.cmd"
+      ],
+      "tests": [
+        {
+          "file": "tests/development-workflow.test.cjs",
+          "cases": 7
+        },
+        {
+          "file": "tests/source-boundaries.test.cjs",
+          "cases": 5
+        },
+        {
+          "file": "tests/source-handoff.test.cjs",
+          "cases": 4
+        }
+      ]
+    },
+    "source-handoff": {
+      "name": "Súkromný balík zdrojového kódu",
+      "paths": [
+        "scripts/prepare-source-handoff.mjs",
+        "scripts/check-source-boundaries.mjs",
+        "tests/source-handoff.test.cjs"
+      ],
+      "tests": [
+        {
+          "file": "tests/source-handoff.test.cjs",
+          "cases": 4
+        }
+      ]
+    },
+    "knowledge-system": {
+      "name": "Samostatná profilová mapa a vlastná knižnica",
+      "paths": [
+        "public/knowledge-system",
+        "public/knowledge-portal.js",
+        "public/knowledge-portal.css",
+        "tests/knowledge-system-store.test.cjs",
+        "tests/knowledge-system-authors.test.cjs"
+      ],
+      "tests": [
+        {
+          "file": "tests/knowledge-system-store.test.cjs",
+          "cases": 20
+        },
+        {
+          "file": "tests/knowledge-system-authors.test.cjs",
+          "cases": 11
+        }
+      ]
+    },
+    "knowledge-integration": {
+      "name": "Grimoár ako hlavná Knižnica a most z pojmovej mapy",
+      "paths": [
+        ".gitignore",
+        ".workflow/modules.json",
+        "README.md",
+        "docs/MODULES.md",
+        "docs/DATA.md",
+        "package.json",
+        "package-lock.json",
+        "tsconfig.json",
+        "public/app.js",
+        "public/app.css",
+        "public/index.html",
+        "public/knowledge-system/app.js",
+        "public/knowledge-library.js",
+        "public/knowledge-library.css",
+        "public/grimoire-workbench.js",
+        "public/desk.js",
+        "public/desk.css",
+        "public/desk-vector.js",
+        "public/desk-model.js",
+        "public/academy.js",
+        "server/desk-model.mjs",
+        "tests/desk-model.test.cjs",
+        "tests/desk-client.test.cjs",
+        "tests/grimoire-workbench.test.cjs",
+        "docs/STATUS.md",
+        "knowledge-app/index.html",
+        "knowledge-app/src",
+        "knowledge-app/tsconfig.json",
+        "knowledge-app/vite.config.ts",
+        "knowledge-app/README.md",
+        "knowledge-app/public/magnum-opus-logo.png",
+        "scripts/build-knowledge-app.mjs",
+        "tests/knowledge-integration.test.cjs"
+      ],
+      "tests": [
+        {
+          "file": "tests/knowledge-integration.test.cjs",
+          "cases": 28
+        },
+        {
+          "file": "tests/grimoire-workbench.test.cjs",
+          "cases": 14
+        }
+      ]
+    },
+    "knowledge-local-integration": {
+      "name": "Miestny Grimoár pod účtom hry bez cloudového prepojenia",
+      "paths": [
+        ".workflow/modules.json",
+        "README.md",
+        "docs/DATA.md",
+        "docs/MODULES.md",
+        "docs/STATUS.md",
+        "app/api",
+        "db/schema.ts",
+        "db/knowledge-grimoire-schema.ts",
+        "drizzle",
+        "server/knowledge.ts",
+        "server/knowledge-grimoire.ts",
+        "server/knowledge-grimoire-model.mjs",
+        "knowledge-app/src/main.ts",
+        "knowledge-app/src/storage/local-grimoire-store.ts",
+        "knowledge-app/src/ui/auth-screen.ts",
+        "knowledge-app/src/ui/search-screen.ts",
+        "knowledge-app/src/search/index.ts",
+        "knowledge-app/src/search/search-service.ts",
+        "knowledge-app/index.html",
+        "knowledge-app/README.md",
+        "public/index.html",
+        "public/knowledge-system/index.html",
+        "scripts/start-local.ps1",
+        "public/knowledge-game-search.js",
+        "public/knowledge-library.js",
+        "public/knowledge-source-navigation.js",
+        "public/knowledge-system/app.js",
+        "public/knowledge-system/style.css",
+        "public/auth.js",
+        "public/app.js",
+        "public/model.js",
+        "server/auth.ts",
+        "server/game-model.cjs",
+        "server/game-model.mjs",
+        "scripts/sync-game-model.mjs",
+        "tests/auth-client.test.cjs",
+        "tests/auth.test.cjs",
+        "tests/knowledge-grimoire-model.test.cjs",
+        "tests/knowledge-grimoire.test.cjs",
+        "tests/knowledge-game-search.test.cjs",
+        "tests/knowledge-integration.test.cjs"
+      ],
+      "tests": [
+        {
+          "file": "tests/knowledge.test.cjs",
+          "cases": 9
+        },
+        {
+          "file": "tests/knowledge-grimoire-model.test.cjs",
+          "cases": 5
+        },
+        {
+          "file": "tests/knowledge-grimoire.test.cjs",
+          "cases": 23
+        },
+        {
+          "file": "tests/knowledge-game-search.test.cjs",
+          "cases": 7
+        },
+        {
+          "file": "tests/knowledge-integration.test.cjs",
+          "cases": 28
+        }
+      ]
+    },
+    "knowledge-hierarchy": {
+      "name": "Model vlastných kategórií a spoločné rozlíšenie vetiev",
+      "paths": [
+        "public/knowledge-system/hierarchy.js",
+        "tests/knowledge-hierarchy.test.cjs",
+        "docs/KNOWLEDGE-HIERARCHY-API.md"
+      ],
+      "tests": [
+        {
+          "file": "tests/knowledge-hierarchy.test.cjs",
+          "cases": 14
+        }
+      ]
+    },
+    "knowledge-vocabulary": {
+      "name": "Atómové úložisko hierarchie, pojmov a autorov a zálohy v2",
+      "paths": [
+        "public/knowledge-system/store.js",
+        "tests/knowledge-system-store.test.cjs",
+        "docs/KNOWLEDGE-VOCABULARY-API.md"
+      ],
+      "tests": [
+        {
+          "file": "tests/knowledge-system-store.test.cjs",
+          "cases": 20
+        }
+      ]
+    },
+    "knowledge-import": {
+      "name": "Čítanie dokumentov, OCR a presné strany",
+      "paths": [
+        "public/knowledge-extract.js",
+        "public/knowledge-reader.js",
+        "public/knowledge-reader.css",
+        "public/ocr.js",
+        "scripts/sync-knowledge-vendors.mjs",
+        "tests/knowledge-extract.test.cjs",
+        "tests/knowledge-reader.test.cjs"
+      ],
+      "tests": [
+        {
+          "file": "tests/knowledge-extract.test.cjs",
+          "cases": 6
+        },
+        {
+          "file": "tests/knowledge-reader.test.cjs",
+          "cases": 2
+        }
+      ]
+    },
+    "knowledge-links": {
+      "name": "Vyhľadávanie a prechod do pôvodných herných zápiskov",
+      "paths": [
+        "public/knowledge-game-search.js",
+        "public/knowledge-source-navigation.js",
+        "public/knowledge-source-navigation.css",
+        "tests/knowledge-game-search.test.cjs"
+      ],
+      "tests": [
+        {
+          "file": "tests/knowledge-game-search.test.cjs",
+          "cases": 6
+        }
+      ]
+    },
+    "knowledge-map": {
+      "name": "Staršia herná mapa, taxonómia a serverové úložisko",
+      "paths": [
+        "server/knowledge.ts",
+        "server/knowledge-model.mjs",
+        "db/knowledge-schema.ts",
+        "public/knowledge.js",
+        "public/knowledge.css",
+        "public/knowledge-model.js",
+        "scripts/sync-knowledge-model.mjs",
+        "tests/knowledge-model.test.cjs",
+        "tests/knowledge.test.cjs",
+        "tests/knowledge-client.test.cjs"
+      ],
+      "tests": [
+        {
+          "file": "tests/knowledge-model.test.cjs",
+          "cases": 9
+        },
+        {
+          "file": "tests/knowledge.test.cjs",
+          "cases": 9
+        },
+        {
+          "file": "tests/knowledge-client.test.cjs",
+          "cases": 5
+        }
+      ]
+    },
+    "library": {
+      "name": "Knihy a kategórie fotografií",
+      "paths": [
+        "server/library-categories.ts",
+        "public/library-categories.js",
+        "public/library-categories.css",
+        "public/goodreads.js",
+        "tests/library-categories.test.cjs",
+        "tests/library-categories-client.test.cjs"
+      ],
+      "tests": [
+        {
+          "file": "tests/library-categories.test.cjs",
+          "cases": 13
+        },
+        {
+          "file": "tests/library-categories-client.test.cjs",
+          "cases": 8
+        }
+      ]
+    },
+    "desk": {
+      "name": "Existujúci alchymistický stôl — opravy a zachovanie dát",
+      "paths": [
+        "public/desk.js",
+        "public/desk.css",
+        "public/desk-model.js",
+        "public/desk-vector.js",
+        "server/desk.ts",
+        "server/desk-model.mjs",
+        "scripts/sync-desk-model.mjs",
+        "tests/desk-model.test.cjs",
+        "tests/desk-client.test.cjs",
+        "tests/desk.test.cjs"
+      ],
+      "tests": [
+        {
+          "file": "tests/desk-model.test.cjs",
+          "cases": 11
+        },
+        {
+          "file": "tests/desk-client.test.cjs",
+          "cases": 18
+        },
+        {
+          "file": "tests/desk.test.cjs",
+          "cases": 12
+        }
+      ]
+    },
+    "study": {
+      "name": "Existujúce osobné štúdium",
+      "paths": [
+        "public/study.js",
+        "public/study.css",
+        "public/study-model.js",
+        "server/study.ts",
+        "server/study-model.mjs",
+        "scripts/sync-study-model.mjs",
+        "tests/study.test.cjs",
+        "tests/study-model.test.cjs",
+        "tests/study-client.test.cjs",
+        "tests/study-resources-client.test.cjs"
+      ],
+      "tests": [
+        {
+          "file": "tests/study.test.cjs",
+          "cases": 10
+        },
+        {
+          "file": "tests/study-model.test.cjs",
+          "cases": 8
+        },
+        {
+          "file": "tests/study-client.test.cjs",
+          "cases": 5
+        },
+        {
+          "file": "tests/study-resources-client.test.cjs",
+          "cases": 5
+        }
+      ]
+    },
+    "workspace": {
+      "name": "Pracovňa a spoločná Akadémia",
+      "paths": [
+        "server/academy.ts",
+        "public/academy.js",
+        "public/academy.css",
+        "tests/academy.test.cjs",
+        "tests/academy-client.test.cjs"
+      ],
+      "tests": [
+        {
+          "file": "tests/academy.test.cjs",
+          "cases": 7
+        },
+        {
+          "file": "tests/academy-client.test.cjs",
+          "cases": 8
+        }
+      ]
+    },
+    "accounts": {
+      "name": "Lokálny účet a prístup",
+      "paths": [
+        "server/auth.ts",
+        "public/auth.js",
+        "public/auth.css",
+        "public/local-profile.css",
+        "tests/auth.test.cjs",
+        "tests/auth-client.test.cjs",
+        "tests/local-middleware.test.cjs"
+      ],
+      "tests": [
+        {
+          "file": "tests/auth.test.cjs",
+          "cases": 14
+        },
+        {
+          "file": "tests/auth-client.test.cjs",
+          "cases": 18
+        },
+        {
+          "file": "tests/local-middleware.test.cjs",
+          "cases": 1
+        }
+      ]
+    },
+    "game": {
+      "name": "Herný progres, odmeny a hlavné rozhranie",
+      "paths": [
+        "public/app.js",
+        "public/index.html",
+        "public/app.css",
+        "public/styles.css",
+        "public/extras.js",
+        "public/model.js",
+        "public/village-layout.css",
+        "public/desktop.js",
+        "public/desktop.css",
+        "public/hydration.js",
+        "public/hydration.css",
+        "app/api",
+        "db/schema.ts",
+        "server/game-model.mjs",
+        "server/game-model.cjs",
+        "tests/model.test.cjs",
+        "tests/model-historical.test.cjs"
+      ],
+      "tests": [
+        {
+          "file": "tests/model.test.cjs",
+          "cases": 7
+        },
+        {
+          "file": "tests/model-historical.test.cjs",
+          "cases": 10
+        }
+      ]
+    },
+    "calendar": {
+      "name": "Existujúci kalendár — nové rozšírenia sú pozastavené",
+      "paths": [
+        "server/calendar.ts",
+        "server/calendar-notes.ts",
+        "public/calendar.js",
+        "public/calendar.css",
+        "public/daynotes.js",
+        "public/daynotes.css",
+        "public/namedays.js",
+        "tests/calendar-notes.test.cjs",
+        "tests/daynotes-client.test.cjs"
+      ],
+      "tests": [
+        {
+          "file": "tests/calendar-notes.test.cjs",
+          "cases": 9
+        },
+        {
+          "file": "tests/daynotes-client.test.cjs",
+          "cases": 8
+        }
+      ]
+    },
+    "profile-social": {
+      "name": "Profil, Sieň slávy a Pošta",
+      "paths": [
+        "server/showcase.ts",
+        "server/social.ts",
+        "public/showcase.js",
+        "public/showcase.css",
+        "public/social.js",
+        "public/social.css",
+        "tests/showcase.test.cjs",
+        "tests/social.test.cjs"
+      ],
+      "tests": [
+        {
+          "file": "tests/showcase.test.cjs",
+          "cases": 11
+        },
+        {
+          "file": "tests/social.test.cjs",
+          "cases": 13
+        }
+      ]
+    },
+    "quotes": {
+      "name": "Citáty a knižné zdroje",
+      "paths": [
+        "server/quotes.ts",
+        "public/quotes.js",
+        "public/quotes.css",
+        "public/quotes-data.js",
+        "public/quote-sources.js",
+        "public/quote-authors.js",
+        "public/quote-authors.css",
+        "tests/quotes.test.cjs",
+        "tests/quote-sources.test.cjs",
+        "tests/quote-authors.test.cjs"
+      ],
+      "tests": [
+        {
+          "file": "tests/quotes.test.cjs",
+          "cases": 2
+        },
+        {
+          "file": "tests/quote-sources.test.cjs",
+          "cases": 8
+        },
+        {
+          "file": "tests/quote-authors.test.cjs",
+          "cases": 4
+        }
+      ]
+    },
+    "profile-windows": {
+      "name": "Gotické okná pri profilovke a navigácia do dedinky",
+      "paths": [
+        "public/profile-windows.js",
+        "public/profile-windows.css",
+        "public/index.html",
+        "public/app.js",
+        "tests/profile-windows.test.cjs"
+      ],
+      "tests": [
+        {
+          "file": "tests/profile-windows.test.cjs",
+          "cases": 1
+        }
+      ]
+    },
+    "knowledge-learning": {
+      "name": "Vlastné definície, zdroje, opakovanie a zlaté uzly",
+      "paths": [
+        "public/model.js",
+        "public/learning.js",
+        "public/learning-clock.js",
+        "public/learning.css",
+        "public/knowledge-system",
+        "public/index.html",
+        "public/app.js",
+        "server/game-model.cjs",
+        "server/game-model.mjs",
+        "server/knowledge-catalog.cjs",
+        "server/knowledge-catalog.mjs",
+        "scripts/sync-game-model.mjs",
+        "tests/knowledge-learning.test.cjs",
+        "tests/learning-clock.test.cjs",
+        "tests/model.test.cjs",
+        "tests/knowledge-system-authors.test.cjs",
+        "tests/knowledge-hierarchy.test.cjs",
+        "README.md",
+        "docs/DATA.md",
+        "docs/MODULES.md",
+        ".workflow/modules.json"
+      ],
+      "tests": [
+        {
+          "file": "tests/knowledge-learning.test.cjs",
+          "cases": 8
+        },
+        {
+          "file": "tests/learning-clock.test.cjs",
+          "cases": 3
+        },
+        {
+          "file": "tests/model.test.cjs",
+          "cases": 7
+        },
+        {
+          "cases": 11,
+          "file": "tests/knowledge-system-authors.test.cjs"
+        },
+        {
+          "file": "tests/knowledge-hierarchy.test.cjs",
+          "cases": 1,
+          "pattern": "current complete built-in catalog"
+        }
+      ]
+    },
+    "grimoire-atmosphere": {
+      "name": "Ilustrované pozadie Grimoára a čitateľné priehľadné panely",
+      "paths": [
+        "knowledge-app/src/main.ts",
+        "knowledge-app/src/ui/grimoire-atmosphere.css",
+        "knowledge-app/src/ui/search-screen.ts",
+        "knowledge-app/src/editor/editor.css",
+        "docs/MODULES.md",
+        ".workflow/modules.json",
+        "knowledge-app/public/images/grimoire-sanctuary.png",
+        "knowledge-app/public/images/grimoire-book-background-v1.png",
+        "knowledge-app/public/images/grimoire-table-background-v1.png",
+        "knowledge-app/public/images/grimoire-table-background-v2.png",
+        "knowledge-app/public/images/grimoire-reader-book-v1.png",
+        "docs/GRIMOIRE-BACKGROUNDS.md",
+        "public/knowledge",
+        "docs/STATUS.md",
+        "knowledge-app/public/images/grimoire-sanctuary-v2.png"
+      ],
+      "tests": []
+    },
+    "workbench-toolbar": {
+      "name": "Horné ovládanie editora a kanvasu s menšími poľami rozmerov",
+      "paths": [
+        "knowledge-app/src/editor/workbench.ts",
+        "knowledge-app/src/editor/editor.css",
+        "public/knowledge",
+        "docs/STATUS.md"
+      ],
+      "tests": []
+    },
+    "grimoire-scratch": {
+      "name": "Čistý koncept a dokumentové prepínače bez pôvodnej Pracovne",
+      "paths": [
+        "knowledge-app/src/editor/workbench.ts",
+        "knowledge-app/src/editor/editor.css",
+        "knowledge-app/src/ui/search-screen.ts",
+        "public/knowledge",
+        "docs/STATUS.md"
+      ],
+      "tests": []
+    },
+    "visual-theme": {
+      "tests": [
+        {
+          "pattern": "the Library defaults|library deep links",
+          "cases": 2,
+          "file": "tests/knowledge-integration.test.cjs"
+        }
+      ],
+      "name": "Graficka prestavba",
+      "paths": [
+        "public/opus-theme.css",
+        "public/assets/opus-arcade.svg",
+        "public/assets/alchemist-library-reference.png",
+        "public/index.html",
+        "public/app.js",
+        "public/grimoire-workbench.js",
+        "public/knowledge-system/index.html",
+        "knowledge-app/src/main.ts",
+        "docs/VISUAL-DESIGN.md",
+        "docs/STATUS.md",
+        ".workflow/modules.json",
+        "public/assets/library-background-v1.png"
+      ]
+    }
+  }
+}

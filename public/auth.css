@@ -1,0 +1,106 @@
+/* Account entry and cloud-save controls; all game styling remains independent. */
+body.auth-locked { padding: 0; overflow: hidden; }
+body.auth-locked > #sidebar,
+body.auth-locked > #main,
+body.auth-locked > .mobile-bar,
+body.auth-locked > .sidebar-overlay,
+body.auth-locked > .skip-link,
+body.auth-locked > #toast { display: none !important; }
+.mo-auth-screen[hidden] { display: none; }
+.mo-auth-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  overflow: auto;
+  padding: max(28px, 5svh) 20px 26px;
+  color: #efe6d4;
+  background: #102830;
+  font-family: "Segoe UI", Tahoma, sans-serif;
+  -webkit-overflow-scrolling: touch;
+}
+.mo-auth-world { position: fixed; inset: 0; z-index: -1; pointer-events: none; background-image: linear-gradient(110deg, #0a2028c9, #172031a1 65%, #122b31ba), url("assets/village.png"); background-size: 100% 100%, 127.15% 100%; background-position: center, right center; }
+.mo-auth-world::after { content: ""; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 35%, transparent, #07151b8c); backdrop-filter: blur(2px); }
+.mo-auth-card { position: relative; flex-shrink: 0; width: 100%; max-width: 440px; padding: 29px 33px 23px; margin: auto 0 0; border: 1px solid #cda45b99; border-radius: 14px; background: linear-gradient(145deg, #1d3942f5, #152b38fa 65%, #1c2a3bf5); box-shadow: 0 25px 100px #04101aa1, inset 0 1px 0 #e6cc9312, 0 0 0 5px #d7b7650b; }
+.mo-auth-card::before { content: "✦"; position: absolute; top: -13px; left: calc(50% - 13px); display: grid; place-items: center; width: 26px; height: 26px; color: #e6c481; background: #1d3540; border: 1px solid #b99a6259; border-radius: 50%; font-size: 12px; }
+.mo-auth-brand { display: flex; align-items: center; justify-content: center; gap: 12px; padding-bottom: 22px; }
+.mo-auth-brand img { height: 73px; width: 57px; filter: drop-shadow(0 4px 8px #06192466); }
+.mo-auth-brand > div { display: flex; flex-direction: column; gap: 6px; }
+.mo-auth-brand span { color: #f0d494; font: 700 23px/1 Georgia, serif; letter-spacing: .045em; }
+.mo-auth-brand small { font-size: 8px; color: #bda675; letter-spacing: .22em; }
+.mo-auth-tabs { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; padding: 4px; margin-bottom: 25px; border: 1px solid #b7b89820; border-radius: 8px; background: #0a202b59; }
+.mo-auth-tabs button { padding: 8px 10px; border: 0; border-radius: 5px; background: transparent; color: #a5b8b7; font: 11px/1.5 "Segoe UI", sans-serif; cursor: pointer; }
+.mo-auth-tabs button[aria-selected=true] { background: #5a655236; color: #ebd9ae; box-shadow: inset 0 0 0 1px #d6bc7940; }
+.mo-auth-eyebrow { margin: 0 0 9px; color: #d0b576; font-size: 8px; font-weight: 600; line-height: 1.5; letter-spacing: .14em; }
+.mo-auth-card h1 { margin: 0 0 10px; color: #f0e3c8; font: 400 30px/1.22 Georgia, serif; }
+.mo-auth-copy { margin: 0 0 22px; color: #b6c3c3; font-size: 12px; line-height: 1.8; }
+.mo-auth-field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
+.mo-auth-field label { color: #dddccc; font-size: 11px; font-weight: 500; }
+.mo-auth-field input { min-height: 43px; width: 100%; padding: 10px 12px; border: 1px solid #b4bba14a; border-radius: 6px; background: #0c2230b3; color: #f1e9da; font: 13px/1.5 "Segoe UI", sans-serif; }
+.mo-auth-field input:focus { outline: 2px solid #c4a66e; outline-offset: 2px; border-color: #d4bd7c; }
+.mo-auth-field input::placeholder { color: #79929e; }
+.mo-auth-field small, .mo-auth-hint { margin: 0; color: #8fa7ad; font-size: 9px; line-height: 1.6; }
+.mo-auth-hint { margin-top: 13px; text-align: center; }
+.mo-auth-import { display: flex; align-items: flex-start; gap: 9px; padding: 12px; border: 1px solid #a8bb9826; border-radius: 6px; background: #9fb17b09; color: #cad2c4; font-size: 10px; line-height: 1.7; cursor: pointer; }
+.mo-auth-import input { flex-shrink: 0; margin: 3px 0 0; width: 14px; height: 14px; accent-color: #cfb575; }
+.mo-auth-import small { display: block; color: #93a9a7; font-size: 9px; }
+.mo-auth-feedback { margin: 0; }
+.mo-auth-feedback.has-message { padding: 10px 12px; margin: 13px 0; color: #e9b2a8; background: #a35c6217; border: 1px solid #c981782e; border-radius: 6px; font-size: 11px; line-height: 1.7; }
+.mo-auth-submit { display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; min-height: 44px; margin-top: 17px; padding: 11px 15px; border: 1px solid #e0bd7b; border-radius: 6px; color: #352c21; background: linear-gradient(135deg, #e6c785, #cba35e); box-shadow: inset 0 1px 0 #fce8b955, 0 3px 14px #0a161e33; text-align: center; text-decoration: none; font: 600 12px/1.6 "Segoe UI", sans-serif; cursor: pointer; transition: background .2s, transform .2s; }
+.mo-auth-submit:hover { background: linear-gradient(135deg, #f0d599, #dbb36b); transform: translateY(-1px); }
+.mo-auth-submit:disabled { opacity: .65; cursor: wait; transform: none; }
+.mo-auth-submit:focus-visible, .mo-auth-tabs button:focus-visible, .mo-auth-pending button:focus-visible { outline: 2px solid #f3d894; outline-offset: 4px; }
+.mo-auth-privacy { display: flex; align-items: center; justify-content: center; gap: 7px; margin: 15px 0 0; color: #859ea4; font-size: 9px; line-height: 1.6; }
+.mo-auth-privacy svg { width: 13px; height: 13px; color: #a5b6a1; flex-shrink: 0; }
+.mo-auth-motto { margin: 23px 0 0; padding-top: 17px; border-top: 1px solid #c5ad7221; text-align: center; color: #c6bea8; font: italic 12px/1.6 Georgia, serif; }
+.mo-auth-world-note { position: relative; margin: 19px 0 auto; padding-top: 2px; color: #bfc5b8; font: italic 12px/1.7 Georgia, serif; text-shadow: 0 1px 4px #061522; }
+.mo-auth-loading { text-align: center; padding: 14px 0 8px; }
+.mo-auth-loading > svg { width: 29px; height: 29px; color: #d8ba77; margin: 0 auto 17px; animation: mo-auth-pulse 1.6s ease-in-out infinite alternate; }
+.mo-auth-loading h1 { font-size: 25px; }
+.mo-auth-loading p { font-size: 12px; color: #b8c6c4; margin: 10px 0 0; }
+.mo-auth-pending { margin-top: 15px; padding: 11px; color: #cebda1; border: 1px solid #c0a46f40; border-radius: 6px; font-size: 10px; line-height: 1.7; background: #b69a4e0a; }
+.mo-auth-pending p { margin: 0 0 8px; }
+.mo-auth-pending button { padding: 5px 0; border: 0; color: #ebcf91; background: transparent; text-decoration: underline; text-underline-offset: 4px; font-size: 10px; cursor: pointer; }
+.mo-account-controls { padding: 10px 7px 12px; margin-bottom: 7px; border-bottom: 1px solid #c1ad7124; }
+.mo-account-status { display: flex; align-items: center; justify-content: center; gap: 6px; color: #a6b9ac; font-size: 9px; line-height: 1.5; margin-bottom: 8px; }
+.mo-account-dot { width: 4px; height: 4px; border-radius: 50%; flex-shrink: 0; background: #8db491; }
+.mo-account-status.is-pending, .mo-account-status.is-saving { color: #d4c392; }
+.mo-account-status.is-pending .mo-account-dot, .mo-account-status.is-saving .mo-account-dot { background: #d5b776; }
+.mo-account-status.is-error, .mo-account-status.is-conflict { color: #e2b39a; }
+.mo-account-status.is-error .mo-account-dot, .mo-account-status.is-conflict .mo-account-dot { background: #d58e79; }
+.mo-account-status.is-saving .mo-account-dot { animation: mo-auth-pulse .8s ease-in-out infinite alternate; }
+.mo-account-buttons { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; }
+.mo-account-buttons button { display: flex; align-items: center; justify-content: center; gap: 6px; min-height: 31px; padding: 5px 7px; border: 1px solid #b1af8130; border-radius: 5px; color: #b8c5be; background: #0c263033; font: 9px/1.5 "Segoe UI", sans-serif; cursor: pointer; }
+.mo-account-buttons button:hover { color: #eddbad; border-color: #d2b47866; background: #31505055; }
+.mo-account-buttons button:disabled { opacity: .5; cursor: not-allowed; }
+.mo-account-buttons button svg { width: 13px; height: 13px; }
+.mo-account-error { margin: 10px 0 0; font-size: 9px; line-height: 1.7; color: #d8b5a4; overflow-wrap: anywhere; }
+.mo-account-recovery { display: flex; flex-direction: column; gap: 6px; margin-top: 8px; }
+.mo-account-recovery button { border: 1px solid #b8a07840; border-radius: 4px; color: #e0c68e; background: #e3c1760b; padding: 7px 8px; font: 9px/1.5 "Segoe UI", sans-serif; cursor: pointer; text-align: left; }
+.mo-account-recovery button:hover { background: #e3c17617; border-color: #d8b16c7a; }
+@keyframes mo-auth-pulse { to { opacity: .4; } }
+@media (max-width: 600px) {
+  .mo-auth-screen { padding: 24px 15px; }
+  .mo-auth-card { padding: 25px 25px 22px; }
+  .mo-auth-world { background-size: 100% 100%, auto 100%; background-position: center, right center; }
+  .mo-auth-field input { font-size: 16px; }
+  .mo-auth-brand { padding-bottom: 20px; }
+  .mo-auth-brand span { font-size: 22px; }
+  .mo-auth-card h1 { font-size: 28px; }
+  .mo-auth-privacy { font-size: 9px; }
+}
+@media (max-height: 760px) {
+  .mo-auth-screen { padding-top: 22px; padding-bottom: 20px; }
+  .mo-auth-brand { padding-bottom: 17px; }
+  .mo-auth-brand img { height: 57px; width: 45px; }
+  .mo-auth-tabs { margin-bottom: 19px; }
+  .mo-auth-field { margin-bottom: 12px; }
+  .mo-auth-motto { margin-top: 18px; padding-top: 14px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mo-auth-loading > svg, .mo-account-status.is-saving .mo-account-dot { animation: none; }
+  .mo-auth-submit { transition: none; }
+}

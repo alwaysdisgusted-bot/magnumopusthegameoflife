@@ -1,0 +1,49 @@
+.knowledge-source-panel {
+  margin: 1.1rem 0 1.5rem;
+  padding: 1rem 1.15rem;
+  border: 1px solid #c9ad63;
+  border-radius: 16px;
+  background: #fff9e9;
+  color: #302d3d;
+  box-shadow: 0 5px 18px #3c2b1510;
+  scroll-margin-block: 1rem;
+}
+.scene > .knowledge-source-panel { margin: 1rem; }
+.knowledge-source-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.knowledge-source-panel .knowledge-source-heading h2 { margin: .25rem 0 .4rem; font-size: 1.15rem; overflow-wrap: anywhere; color: #403348; }
+.knowledge-source-panel .knowledge-source-heading .eyebrow { margin: 0; font-size: .68rem; color: #80632b; }
+.knowledge-source-heading > button { flex-shrink: 0; }
+.knowledge-source-status, .knowledge-source-hint { margin: .5rem 0; font-size: .85rem; line-height: 1.55; }
+.knowledge-source-hint { color: #625b70; }
+.knowledge-source-controls { display: flex; gap: .5rem; flex-wrap: wrap; align-items: center; margin: .65rem 0; }
+.knowledge-source-counter { font-size: .82rem; font-variant-numeric: tabular-nums; }
+.knowledge-source-preview {
+  max-height: 24rem;
+  overflow: auto;
+  padding: .9rem 1rem;
+  border: 1px solid #ded2b2;
+  border-radius: 10px;
+  background: #fffefa;
+  overscroll-behavior: contain;
+  scrollbar-gutter: stable;
+}
+.knowledge-source-preview:focus-visible { outline: 3px solid #5266b5; outline-offset: 2px; }
+.knowledge-source-panel .knowledge-source-title { margin: 0 0 .65rem; font-size: 1.05rem; color: #403348; }
+.knowledge-source-meta { color: #625b70; font-size: .85rem; }
+.knowledge-source-text, .knowledge-source-title, .knowledge-source-meta { white-space: pre-wrap; overflow-wrap: anywhere; }
+.knowledge-source-text { margin: .65rem 0 0; line-height: 1.65; }
+.knowledge-source-match { background: #ffe282; color: #302910; padding: .04em .06em; border-radius: 3px; }
+.knowledge-source-match.is-current { background: #efbd48; color: #211b10; outline: 2px solid #9c681d; outline-offset: 1px; scroll-margin-block: 4rem; }
+.knowledge-source-target { outline: 3px solid #c59337 !important; outline-offset: 3px; }
+.desk-item.knowledge-source-target { box-shadow: 0 0 0 5px #ffde77aa, 0 8px 20px #30251533; }
+@media (max-width: 640px) {
+  .knowledge-source-panel { padding: .9rem; }
+  .knowledge-source-heading { flex-direction: column; gap: .5rem; }
+  .knowledge-source-controls button { flex: 1 1 10rem; }
+  .knowledge-source-preview { max-height: 20rem; padding: .75rem; }
+}

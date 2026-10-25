@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="960" viewBox="0 0 1440 960">
+ <defs>
+  <linearGradient id="stone" x2="1" y2="1"><stop stop-color="#eadfc5"/><stop offset="1" stop-color="#aa8553"/></linearGradient>
+  <linearGradient id="sky" x2="0" y2="1"><stop stop-color="#4058a6"/><stop offset="1" stop-color="#92c5c2"/></linearGradient>
+  <pattern id="blocks" width="180" height="90" patternUnits="userSpaceOnUse"><path d="M0 0h180v90H0ZM90 0v45M0 45h180M45 45v45M135 45v45" fill="none" stroke="#846a52" stroke-width="2" opacity=".25"/></pattern>
+  <g id="leaf"><path d="M0 0Q-34-44-42-10Q-34 13 0 0Q25-39 37-14Q38 5 0 0" fill="#477456" stroke="#263342" stroke-width="3"/></g>
+  <g id="arch"><path d="M0 750V310a180 180 0 0 1 360 0v440Z" fill="url(#sky)" stroke="#8e6d4f" stroke-width="22"/><path d="M-22 750V310a202 202 0 0 1 404 0v440" fill="none" stroke="#eadfc5" stroke-width="20"/><path d="M180 132v618M0 400h360" stroke="#d9ae54" stroke-width="7"/><path d="m110 650 70-180 70 180Z" fill="#4058a6" opacity=".28"/></g>
+ </defs>
+ <path fill="url(#stone)" d="M0 0h1440v960H0z"/><path fill="url(#blocks)" d="M0 0h1440v960H0z"/>
+ <use href="#arch" x="70"/><use href="#arch" x="540"/><use href="#arch" x="1010"/>
+ <path d="M0 790h1440v170H0Z" fill="#263342"/><path d="M0 830h1440M0 900h1440M140 790 50 960M470 790 420 960M800 790 830 960M1130 790 1260 960" stroke="#aa8553" stroke-width="3"/>
+ <path d="M0 20Q320 180 500 20T1000 40T1440 0M40 0Q-10 260 70 440M1400 0q80 200-30 430" fill="none" stroke="#365b43" stroke-width="14"/>
+ <g><use href="#leaf" x="55" y="110"/><use href="#leaf" x="45" y="210"/><use href="#leaf" x="65" y="325"/><use href="#leaf" x="180" y="65"/><use href="#leaf" x="320" y="80"/><use href="#leaf" x="470" y="35"/><use href="#leaf" x="620" y="65"/><use href="#leaf" x="790" y="80"/><use href="#leaf" x="960" y="40"/><use href="#leaf" x="1130" y="80"/><use href="#leaf" x="1300" y="70"/><use href="#leaf" x="1390" y="170"/><use href="#leaf" x="1380" y="280"/></g>
+ <g fill="#d57c9f" stroke="#b95c4b" stroke-width="2"><circle cx="1270" cy="120" r="12"/><circle cx="1290" cy="135" r="10"/><circle cx="1260" cy="145" r="10"/><circle cx="190" cy="170" r="11"/><circle cx="210" cy="180" r="9"/></g>
+ <g stroke="#d9ae54" fill="none" stroke-width="4"><circle cx="720" cy="300" r="60"/><path d="m720 250 44 76h-88ZM690 326h60v-50h-60Z"/></g>
+</svg>

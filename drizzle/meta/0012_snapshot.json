@@ -1,0 +1,2520 @@
+{
+  "version": "6",
+  "dialect": "sqlite",
+  "id": "a4c05ef6-3200-463e-a6ac-bb4a2e2734ca",
+  "prevId": "554a9c4d-f320-4aaa-900f-46892b7166ba",
+  "tables": {
+    "auth_attempts": {
+      "name": "auth_attempts",
+      "columns": {
+        "bucket_key": {
+          "name": "bucket_key",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "window_started_at": {
+          "name": "window_started_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "attempts": {
+          "name": "attempts",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "wizard_accounts": {
+      "name": "wizard_accounts",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "owner_id": {
+          "name": "owner_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "normalized_name": {
+          "name": "normalized_name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "display_name": {
+          "name": "display_name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "password_hash": {
+          "name": "password_hash",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {
+        "wizard_accounts_owner_id_unique": {
+          "name": "wizard_accounts_owner_id_unique",
+          "columns": [
+            "owner_id"
+          ],
+          "isUnique": true
+        },
+        "wizard_accounts_normalized_name_unique": {
+          "name": "wizard_accounts_normalized_name_unique",
+          "columns": [
+            "normalized_name"
+          ],
+          "isUnique": true
+        }
+      },
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "wizard_saves": {
+      "name": "wizard_saves",
+      "columns": {
+        "account_id": {
+          "name": "account_id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "revision": {
+          "name": "revision",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "object_key": {
+          "name": "object_key",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "wizard_saves_account_id_wizard_accounts_id_fk": {
+          "name": "wizard_saves_account_id_wizard_accounts_id_fk",
+          "tableFrom": "wizard_saves",
+          "tableTo": "wizard_accounts",
+          "columnsFrom": [
+            "account_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "wizard_sessions": {
+      "name": "wizard_sessions",
+      "columns": {
+        "token_hash": {
+          "name": "token_hash",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "account_id": {
+          "name": "account_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "owner_id": {
+          "name": "owner_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "csrf_value": {
+          "name": "csrf_value",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "expires_at": {
+          "name": "expires_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {
+        "wizard_sessions_account_idx": {
+          "name": "wizard_sessions_account_idx",
+          "columns": [
+            "account_id"
+          ],
+          "isUnique": false
+        },
+        "wizard_sessions_expiry_idx": {
+          "name": "wizard_sessions_expiry_idx",
+          "columns": [
+            "expires_at"
+          ],
+          "isUnique": false
+        }
+      },
+      "foreignKeys": {
+        "wizard_sessions_account_id_wizard_accounts_id_fk": {
+          "name": "wizard_sessions_account_id_wizard_accounts_id_fk",
+          "tableFrom": "wizard_sessions",
+          "tableTo": "wizard_accounts",
+          "columnsFrom": [
+            "account_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "academy_channels": {
+      "name": "academy_channels",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "room_id": {
+          "name": "room_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "name": {
+          "name": "name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {
+        "academy_channels_room_idx": {
+          "name": "academy_channels_room_idx",
+          "columns": [
+            "room_id"
+          ],
+          "isUnique": false
+        }
+      },
+      "foreignKeys": {
+        "academy_channels_room_id_academy_rooms_id_fk": {
+          "name": "academy_channels_room_id_academy_rooms_id_fk",
+          "tableFrom": "academy_channels",
+          "tableTo": "academy_rooms",
+          "columnsFrom": [
+            "room_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "academy_join_attempts": {
+      "name": "academy_join_attempts",
+      "columns": {
+        "account_id": {
+          "name": "account_id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "window_start": {
+          "name": "window_start",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "attempts": {
+          "name": "attempts",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": 0
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "academy_join_attempts_account_id_wizard_accounts_id_fk": {
+          "name": "academy_join_attempts_account_id_wizard_accounts_id_fk",
+          "tableFrom": "academy_join_attempts",
+          "tableTo": "wizard_accounts",
+          "columnsFrom": [
+            "account_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "academy_members": {
+      "name": "academy_members",
+      "columns": {
+        "room_id": {
+          "name": "room_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "account_id": {
+          "name": "account_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "joined_at": {
+          "name": "joined_at",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {
+        "academy_members_account_idx": {
+          "name": "academy_members_account_idx",
+          "columns": [
+            "account_id"
+          ],
+          "isUnique": false
+        }
+      },
+      "foreignKeys": {
+        "academy_members_room_id_academy_rooms_id_fk": {
+          "name": "academy_members_room_id_academy_rooms_id_fk",
+          "tableFrom": "academy_members",
+          "tableTo": "academy_rooms",
+          "columnsFrom": [
+            "room_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "academy_members_account_id_wizard_accounts_id_fk": {
+          "name": "academy_members_account_id_wizard_accounts_id_fk",
+          "tableFrom": "academy_members",
+          "tableTo": "wizard_accounts",
+          "columnsFrom": [
+            "account_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {
+        "academy_members_room_id_account_id_pk": {
+          "columns": [
+            "room_id",
+            "account_id"
+          ],
+          "name": "academy_members_room_id_account_id_pk"
+        }
+      },
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "academy_messages": {
+      "name": "academy_messages",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "channel_id": {
+          "name": "channel_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "author_id": {
+          "name": "author_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "body": {
+          "name": "body",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {
+        "academy_messages_channel_time_idx": {
+          "name": "academy_messages_channel_time_idx",
+          "columns": [
+            "channel_id",
+            "created_at"
+          ],
+          "isUnique": false
+        }
+      },
+      "foreignKeys": {
+        "academy_messages_channel_id_academy_channels_id_fk": {
+          "name": "academy_messages_channel_id_academy_channels_id_fk",
+          "tableFrom": "academy_messages",
+          "tableTo": "academy_channels",
+          "columnsFrom": [
+            "channel_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "academy_messages_author_id_wizard_accounts_id_fk": {
+          "name": "academy_messages_author_id_wizard_accounts_id_fk",
+          "tableFrom": "academy_messages",
+          "tableTo": "wizard_accounts",
+          "columnsFrom": [
+            "author_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "academy_rooms": {
+      "name": "academy_rooms",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "name": {
+          "name": "name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "owner_account_id": {
+          "name": "owner_account_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "invite_hash": {
+          "name": "invite_hash",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {
+        "academy_rooms_invite_hash_idx": {
+          "name": "academy_rooms_invite_hash_idx",
+          "columns": [
+            "invite_hash"
+          ],
+          "isUnique": true
+        }
+      },
+      "foreignKeys": {
+        "academy_rooms_owner_account_id_wizard_accounts_id_fk": {
+          "name": "academy_rooms_owner_account_id_wizard_accounts_id_fk",
+          "tableFrom": "academy_rooms",
+          "tableTo": "wizard_accounts",
+          "columnsFrom": [
+            "owner_account_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "workspace_pages": {
+      "name": "workspace_pages",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "owner_account_id": {
+          "name": "owner_account_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "room_id": {
+          "name": "room_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "title": {
+          "name": "title",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "body": {
+          "name": "body",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": "''"
+        },
+        "revision": {
+          "name": "revision",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": 1
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {
+        "workspace_pages_owner_idx": {
+          "name": "workspace_pages_owner_idx",
+          "columns": [
+            "owner_account_id"
+          ],
+          "isUnique": false
+        },
+        "workspace_pages_room_idx": {
+          "name": "workspace_pages_room_idx",
+          "columns": [
+            "room_id"
+          ],
+          "isUnique": false
+        }
+      },
+      "foreignKeys": {
+        "workspace_pages_owner_account_id_wizard_accounts_id_fk": {
+          "name": "workspace_pages_owner_account_id_wizard_accounts_id_fk",
+          "tableFrom": "workspace_pages",
+          "tableTo": "wizard_accounts",
+          "columnsFrom": [
+            "owner_account_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "workspace_pages_room_id_academy_rooms_id_fk": {
+          "name": "workspace_pages_room_id_academy_rooms_id_fk",
+          "tableFrom": "workspace_pages",
+          "tableTo": "academy_rooms",
+          "columnsFrom": [
+            "room_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "workspace_tasks": {
+      "name": "workspace_tasks",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "owner_account_id": {
+          "name": "owner_account_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "room_id": {
+          "name": "room_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "title": {
+          "name": "title",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "description": {
+          "name": "description",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": "''"
+        },
+        "status": {
+          "name": "status",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": "'todo'"
+        },
+        "assignee_id": {
+          "name": "assignee_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "revision": {
+          "name": "revision",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": 1
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {
+        "workspace_tasks_owner_idx": {
+          "name": "workspace_tasks_owner_idx",
+          "columns": [
+            "owner_account_id"
+          ],
+          "isUnique": false
+        },
+        "workspace_tasks_room_idx": {
+          "name": "workspace_tasks_room_idx",
+          "columns": [
+            "room_id"
+          ],
+          "isUnique": false
+        }
+      },
+      "foreignKeys": {
+        "workspace_tasks_owner_account_id_wizard_accounts_id_fk": {
+          "name": "workspace_tasks_owner_account_id_wizard_accounts_id_fk",
+          "tableFrom": "workspace_tasks",
+          "tableTo": "wizard_accounts",
+          "columnsFrom": [
+            "owner_account_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "workspace_tasks_room_id_academy_rooms_id_fk": {
+          "name": "workspace_tasks_room_id_academy_rooms_id_fk",
+          "tableFrom": "workspace_tasks",
+          "tableTo": "academy_rooms",
+          "columnsFrom": [
+            "room_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "workspace_tasks_assignee_id_wizard_accounts_id_fk": {
+          "name": "workspace_tasks_assignee_id_wizard_accounts_id_fk",
+          "tableFrom": "workspace_tasks",
+          "tableTo": "wizard_accounts",
+          "columnsFrom": [
+            "assignee_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "set null",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "quote_settings": {
+      "name": "quote_settings",
+      "columns": {
+        "account_id": {
+          "name": "account_id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "enabled": {
+          "name": "enabled",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": 1
+        },
+        "idle_minutes": {
+          "name": "idle_minutes",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": 5
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "quote_settings_account_id_wizard_accounts_id_fk": {
+          "name": "quote_settings_account_id_wizard_accounts_id_fk",
+          "tableFrom": "quote_settings",
+          "tableTo": "wizard_accounts",
+          "columnsFrom": [
+            "account_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "saved_quotes": {
+      "name": "saved_quotes",
+      "columns": {
+        "account_id": {
+          "name": "account_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "quote_id": {
+          "name": "quote_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "saved_at": {
+          "name": "saved_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "saved_quotes_account_id_wizard_accounts_id_fk": {
+          "name": "saved_quotes_account_id_wizard_accounts_id_fk",
+          "tableFrom": "saved_quotes",
+          "tableTo": "wizard_accounts",
+          "columnsFrom": [
+            "account_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {
+        "saved_quotes_account_id_quote_id_pk": {
+          "columns": [
+            "account_id",
+            "quote_id"
+          ],
+          "name": "saved_quotes_account_id_quote_id_pk"
+        }
+      },
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "alchemy_desks": {
+      "name": "alchemy_desks",
+      "columns": {
+        "account_id": {
+          "name": "account_id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "revision": {
+          "name": "revision",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "object_key": {
+          "name": "object_key",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "alchemy_desks_account_id_wizard_accounts_id_fk": {
+          "name": "alchemy_desks_account_id_wizard_accounts_id_fk",
+          "tableFrom": "alchemy_desks",
+          "tableTo": "wizard_accounts",
+          "columnsFrom": [
+            "account_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "calendar_days": {
+      "name": "calendar_days",
+      "columns": {
+        "account_id": {
+          "name": "account_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "date": {
+          "name": "date",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "type": {
+          "name": "type",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "revision": {
+          "name": "revision",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "calendar_days_account_id_wizard_accounts_id_fk": {
+          "name": "calendar_days_account_id_wizard_accounts_id_fk",
+          "tableFrom": "calendar_days",
+          "tableTo": "wizard_accounts",
+          "columnsFrom": [
+            "account_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {
+        "calendar_days_account_id_date_pk": {
+          "columns": [
+            "account_id",
+            "date"
+          ],
+          "name": "calendar_days_account_id_date_pk"
+        }
+      },
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "calendar_events": {
+      "name": "calendar_events",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "account_id": {
+          "name": "account_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "title": {
+          "name": "title",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "description": {
+          "name": "description",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "date": {
+          "name": "date",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "time": {
+          "name": "time",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "color": {
+          "name": "color",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "completed": {
+          "name": "completed",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "revision": {
+          "name": "revision",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {
+        "calendar_events_account_date_idx": {
+          "name": "calendar_events_account_date_idx",
+          "columns": [
+            "account_id",
+            "date"
+          ],
+          "isUnique": false
+        }
+      },
+      "foreignKeys": {
+        "calendar_events_account_id_wizard_accounts_id_fk": {
+          "name": "calendar_events_account_id_wizard_accounts_id_fk",
+          "tableFrom": "calendar_events",
+          "tableTo": "wizard_accounts",
+          "columnsFrom": [
+            "account_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "personal_study": {
+      "name": "personal_study",
+      "columns": {
+        "account_id": {
+          "name": "account_id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "revision": {
+          "name": "revision",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "object_key": {
+          "name": "object_key",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "personal_study_account_id_wizard_accounts_id_fk": {
+          "name": "personal_study_account_id_wizard_accounts_id_fk",
+          "tableFrom": "personal_study",
+          "tableTo": "wizard_accounts",
+          "columnsFrom": [
+            "account_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "calendar_birthdays": {
+      "name": "calendar_birthdays",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "account_id": {
+          "name": "account_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "name": {
+          "name": "name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "month": {
+          "name": "month",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "day": {
+          "name": "day",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "year": {
+          "name": "year",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "revision": {
+          "name": "revision",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {
+        "calendar_birthdays_account_date_idx": {
+          "name": "calendar_birthdays_account_date_idx",
+          "columns": [
+            "account_id",
+            "month",
+            "day"
+          ],
+          "isUnique": false
+        }
+      },
+      "foreignKeys": {
+        "calendar_birthdays_account_id_wizard_accounts_id_fk": {
+          "name": "calendar_birthdays_account_id_wizard_accounts_id_fk",
+          "tableFrom": "calendar_birthdays",
+          "tableTo": "wizard_accounts",
+          "columnsFrom": [
+            "account_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "calendar_notes": {
+      "name": "calendar_notes",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "account_id": {
+          "name": "account_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "date": {
+          "name": "date",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "title": {
+          "name": "title",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "text": {
+          "name": "text",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "pins": {
+          "name": "pins",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "visibility": {
+          "name": "visibility",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": "'private'"
+        },
+        "featured": {
+          "name": "featured",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": false
+        },
+        "revision": {
+          "name": "revision",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {
+        "calendar_notes_account_date_idx": {
+          "name": "calendar_notes_account_date_idx",
+          "columns": [
+            "account_id",
+            "date"
+          ],
+          "isUnique": false
+        },
+        "calendar_notes_account_public_idx": {
+          "name": "calendar_notes_account_public_idx",
+          "columns": [
+            "account_id",
+            "visibility",
+            "featured",
+            "updated_at"
+          ],
+          "isUnique": false
+        }
+      },
+      "foreignKeys": {
+        "calendar_notes_account_id_wizard_accounts_id_fk": {
+          "name": "calendar_notes_account_id_wizard_accounts_id_fk",
+          "tableFrom": "calendar_notes",
+          "tableTo": "wizard_accounts",
+          "columnsFrom": [
+            "account_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {
+        "calendar_notes_visibility_check": {
+          "name": "calendar_notes_visibility_check",
+          "value": "\"calendar_notes\".\"visibility\" IN ('private','public')"
+        },
+        "calendar_notes_featured_check": {
+          "name": "calendar_notes_featured_check",
+          "value": "\"calendar_notes\".\"featured\" IN (0,1) AND (\"calendar_notes\".\"visibility\" = 'public' OR \"calendar_notes\".\"featured\" = 0)"
+        }
+      }
+    },
+    "social_friendships": {
+      "name": "social_friendships",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "pair_low": {
+          "name": "pair_low",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "pair_high": {
+          "name": "pair_high",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "requester_id": {
+          "name": "requester_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "recipient_id": {
+          "name": "recipient_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "status": {
+          "name": "status",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "requested_at": {
+          "name": "requested_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "accepted_at": {
+          "name": "accepted_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        }
+      },
+      "indexes": {
+        "social_friendships_pair_idx": {
+          "name": "social_friendships_pair_idx",
+          "columns": [
+            "pair_low",
+            "pair_high"
+          ],
+          "isUnique": true
+        },
+        "social_friendships_requester_idx": {
+          "name": "social_friendships_requester_idx",
+          "columns": [
+            "requester_id"
+          ],
+          "isUnique": false
+        },
+        "social_friendships_recipient_idx": {
+          "name": "social_friendships_recipient_idx",
+          "columns": [
+            "recipient_id"
+          ],
+          "isUnique": false
+        }
+      },
+      "foreignKeys": {
+        "social_friendships_pair_low_wizard_accounts_id_fk": {
+          "name": "social_friendships_pair_low_wizard_accounts_id_fk",
+          "tableFrom": "social_friendships",
+          "tableTo": "wizard_accounts",
+          "columnsFrom": [
+            "pair_low"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "social_friendships_pair_high_wizard_accounts_id_fk": {
+          "name": "social_friendships_pair_high_wizard_accounts_id_fk",
+          "tableFrom": "social_friendships",
+          "tableTo": "wizard_accounts",
+          "columnsFrom": [
+            "pair_high"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "social_friendships_requester_id_wizard_accounts_id_fk": {
+          "name": "social_friendships_requester_id_wizard_accounts_id_fk",
+          "tableFrom": "social_friendships",
+          "tableTo": "wizard_accounts",
+          "columnsFrom": [
+            "requester_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "social_friendships_recipient_id_wizard_accounts_id_fk": {
+          "name": "social_friendships_recipient_id_wizard_accounts_id_fk",
+          "tableFrom": "social_friendships",
+          "tableTo": "wizard_accounts",
+          "columnsFrom": [
+            "recipient_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {
+        "social_friendships_pair_check": {
+          "name": "social_friendships_pair_check",
+          "value": "\"social_friendships\".\"pair_low\" < \"social_friendships\".\"pair_high\" AND ((\"social_friendships\".\"requester_id\" = \"social_friendships\".\"pair_low\" AND \"social_friendships\".\"recipient_id\" = \"social_friendships\".\"pair_high\") OR (\"social_friendships\".\"requester_id\" = \"social_friendships\".\"pair_high\" AND \"social_friendships\".\"recipient_id\" = \"social_friendships\".\"pair_low\"))"
+        },
+        "social_friendships_status_check": {
+          "name": "social_friendships_status_check",
+          "value": "(\"social_friendships\".\"status\" = 'pending' AND \"social_friendships\".\"accepted_at\" IS NULL) OR (\"social_friendships\".\"status\" = 'accepted' AND \"social_friendships\".\"accepted_at\" IS NOT NULL)"
+        }
+      }
+    },
+    "social_mail": {
+      "name": "social_mail",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "sender_id": {
+          "name": "sender_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "recipient_id": {
+          "name": "recipient_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "subject": {
+          "name": "subject",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "text": {
+          "name": "text",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "read_at": {
+          "name": "read_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        }
+      },
+      "indexes": {
+        "social_mail_sender_date_idx": {
+          "name": "social_mail_sender_date_idx",
+          "columns": [
+            "sender_id",
+            "created_at"
+          ],
+          "isUnique": false
+        },
+        "social_mail_recipient_date_idx": {
+          "name": "social_mail_recipient_date_idx",
+          "columns": [
+            "recipient_id",
+            "created_at"
+          ],
+          "isUnique": false
+        }
+      },
+      "foreignKeys": {
+        "social_mail_sender_id_wizard_accounts_id_fk": {
+          "name": "social_mail_sender_id_wizard_accounts_id_fk",
+          "tableFrom": "social_mail",
+          "tableTo": "wizard_accounts",
+          "columnsFrom": [
+            "sender_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "social_mail_recipient_id_wizard_accounts_id_fk": {
+          "name": "social_mail_recipient_id_wizard_accounts_id_fk",
+          "tableFrom": "social_mail",
+          "tableTo": "wizard_accounts",
+          "columnsFrom": [
+            "recipient_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {
+        "social_mail_participants_check": {
+          "name": "social_mail_participants_check",
+          "value": "\"social_mail\".\"sender_id\" <> \"social_mail\".\"recipient_id\""
+        }
+      }
+    },
+    "social_profiles": {
+      "name": "social_profiles",
+      "columns": {
+        "account_id": {
+          "name": "account_id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "visible": {
+          "name": "visible",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": false
+        },
+        "bio": {
+          "name": "bio",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": "''"
+        },
+        "revision": {
+          "name": "revision",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "social_profiles_account_id_wizard_accounts_id_fk": {
+          "name": "social_profiles_account_id_wizard_accounts_id_fk",
+          "tableFrom": "social_profiles",
+          "tableTo": "wizard_accounts",
+          "columnsFrom": [
+            "account_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {
+        "social_profiles_visible_check": {
+          "name": "social_profiles_visible_check",
+          "value": "\"social_profiles\".\"visible\" IN (0,1)"
+        }
+      }
+    },
+    "profile_showcases": {
+      "name": "profile_showcases",
+      "columns": {
+        "account_id": {
+          "name": "account_id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "quote_ids": {
+          "name": "quote_ids",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": "'[]'"
+        },
+        "revision": {
+          "name": "revision",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "profile_showcases_account_id_wizard_accounts_id_fk": {
+          "name": "profile_showcases_account_id_wizard_accounts_id_fk",
+          "tableFrom": "profile_showcases",
+          "tableTo": "wizard_accounts",
+          "columnsFrom": [
+            "account_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {
+        "profile_showcases_quotes_check": {
+          "name": "profile_showcases_quotes_check",
+          "value": "json_valid(\"profile_showcases\".\"quote_ids\") AND json_type(\"profile_showcases\".\"quote_ids\") = 'array' AND json_array_length(\"profile_showcases\".\"quote_ids\") <= 6"
+        }
+      }
+    },
+    "library_categories": {
+      "name": "library_categories",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "account_id": {
+          "name": "account_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "name": {
+          "name": "name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "normalized_name": {
+          "name": "normalized_name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "revision": {
+          "name": "revision",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": 1
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {
+        "library_categories_account_name_idx": {
+          "name": "library_categories_account_name_idx",
+          "columns": [
+            "account_id",
+            "normalized_name"
+          ],
+          "isUnique": true
+        }
+      },
+      "foreignKeys": {
+        "library_categories_account_id_wizard_accounts_id_fk": {
+          "name": "library_categories_account_id_wizard_accounts_id_fk",
+          "tableFrom": "library_categories",
+          "tableTo": "wizard_accounts",
+          "columnsFrom": [
+            "account_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "library_photos": {
+      "name": "library_photos",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "category_id": {
+          "name": "category_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "account_id": {
+          "name": "account_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "caption": {
+          "name": "caption",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "object_key": {
+          "name": "object_key",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "mime": {
+          "name": "mime",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "byte_length": {
+          "name": "byte_length",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "width": {
+          "name": "width",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "height": {
+          "name": "height",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {
+        "library_photos_object_key_unique": {
+          "name": "library_photos_object_key_unique",
+          "columns": [
+            "object_key"
+          ],
+          "isUnique": true
+        },
+        "library_photos_category_idx": {
+          "name": "library_photos_category_idx",
+          "columns": [
+            "category_id"
+          ],
+          "isUnique": false
+        },
+        "library_photos_account_idx": {
+          "name": "library_photos_account_idx",
+          "columns": [
+            "account_id"
+          ],
+          "isUnique": false
+        }
+      },
+      "foreignKeys": {
+        "library_photos_category_id_library_categories_id_fk": {
+          "name": "library_photos_category_id_library_categories_id_fk",
+          "tableFrom": "library_photos",
+          "tableTo": "library_categories",
+          "columnsFrom": [
+            "category_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "library_photos_account_id_wizard_accounts_id_fk": {
+          "name": "library_photos_account_id_wizard_accounts_id_fk",
+          "tableFrom": "library_photos",
+          "tableTo": "wizard_accounts",
+          "columnsFrom": [
+            "account_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "knowledge_files": {
+      "name": "knowledge_files",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "account_id": {
+          "name": "account_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "name": {
+          "name": "name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "object_key": {
+          "name": "object_key",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "mime": {
+          "name": "mime",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "byte_length": {
+          "name": "byte_length",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {
+        "knowledge_files_object_key_unique": {
+          "name": "knowledge_files_object_key_unique",
+          "columns": [
+            "object_key"
+          ],
+          "isUnique": true
+        },
+        "knowledge_files_account_idx": {
+          "name": "knowledge_files_account_idx",
+          "columns": [
+            "account_id"
+          ],
+          "isUnique": false
+        }
+      },
+      "foreignKeys": {
+        "knowledge_files_account_id_wizard_accounts_id_fk": {
+          "name": "knowledge_files_account_id_wizard_accounts_id_fk",
+          "tableFrom": "knowledge_files",
+          "tableTo": "wizard_accounts",
+          "columnsFrom": [
+            "account_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "knowledge_maps": {
+      "name": "knowledge_maps",
+      "columns": {
+        "account_id": {
+          "name": "account_id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "revision": {
+          "name": "revision",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "object_key": {
+          "name": "object_key",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "knowledge_maps_account_id_wizard_accounts_id_fk": {
+          "name": "knowledge_maps_account_id_wizard_accounts_id_fk",
+          "tableFrom": "knowledge_maps",
+          "tableTo": "wizard_accounts",
+          "columnsFrom": [
+            "account_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "knowledge_grimoire_files": {
+      "name": "knowledge_grimoire_files",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "account_id": {
+          "name": "account_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "name": {
+          "name": "name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "media_type": {
+          "name": "media_type",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "byte_length": {
+          "name": "byte_length",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "sha256": {
+          "name": "sha256",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "object_key": {
+          "name": "object_key",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {
+        "knowledge_grimoire_files_object_key_unique": {
+          "name": "knowledge_grimoire_files_object_key_unique",
+          "columns": [
+            "object_key"
+          ],
+          "isUnique": true
+        },
+        "knowledge_grimoire_files_account_idx": {
+          "name": "knowledge_grimoire_files_account_idx",
+          "columns": [
+            "account_id"
+          ],
+          "isUnique": false
+        }
+      },
+      "foreignKeys": {
+        "knowledge_grimoire_files_account_id_wizard_accounts_id_fk": {
+          "name": "knowledge_grimoire_files_account_id_wizard_accounts_id_fk",
+          "tableFrom": "knowledge_grimoire_files",
+          "tableTo": "wizard_accounts",
+          "columnsFrom": [
+            "account_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "knowledge_grimoire_states": {
+      "name": "knowledge_grimoire_states",
+      "columns": {
+        "account_id": {
+          "name": "account_id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "revision": {
+          "name": "revision",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "object_key": {
+          "name": "object_key",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "imported_source_hash": {
+          "name": "imported_source_hash",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "imported_at": {
+          "name": "imported_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "knowledge_grimoire_states_account_id_wizard_accounts_id_fk": {
+          "name": "knowledge_grimoire_states_account_id_wizard_accounts_id_fk",
+          "tableFrom": "knowledge_grimoire_states",
+          "tableTo": "wizard_accounts",
+          "columnsFrom": [
+            "account_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "knowledge_reading_progress": {
+      "name": "knowledge_reading_progress",
+      "columns": {
+        "account_id": {
+          "name": "account_id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "turns": {
+          "name": "turns",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "knowledge_reading_progress_account_id_wizard_accounts_id_fk": {
+          "name": "knowledge_reading_progress_account_id_wizard_accounts_id_fk",
+          "tableFrom": "knowledge_reading_progress",
+          "tableTo": "wizard_accounts",
+          "columnsFrom": [
+            "account_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "knowledge_reading_turns": {
+      "name": "knowledge_reading_turns",
+      "columns": {
+        "event_id": {
+          "name": "event_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "account_id": {
+          "name": "account_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "payload": {
+          "name": "payload",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "ledger_entry": {
+          "name": "ledger_entry",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        }
+      },
+      "indexes": {
+        "knowledge_reading_turns_event_unique": {
+          "name": "knowledge_reading_turns_event_unique",
+          "columns": [
+            "account_id",
+            "event_id"
+          ],
+          "isUnique": true
+        }
+      },
+      "foreignKeys": {
+        "knowledge_reading_turns_account_id_wizard_accounts_id_fk": {
+          "name": "knowledge_reading_turns_account_id_wizard_accounts_id_fk",
+          "tableFrom": "knowledge_reading_turns",
+          "tableTo": "wizard_accounts",
+          "columnsFrom": [
+            "account_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "knowledge_term_rewards": {
+      "name": "knowledge_term_rewards",
+      "columns": {
+        "term_id": {
+          "name": "term_id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "account_id": {
+          "name": "account_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "ledger_entry": {
+          "name": "ledger_entry",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "knowledge_term_rewards_term_id_knowledge_terminology_id_fk": {
+          "name": "knowledge_term_rewards_term_id_knowledge_terminology_id_fk",
+          "tableFrom": "knowledge_term_rewards",
+          "tableTo": "knowledge_terminology",
+          "columnsFrom": [
+            "term_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "knowledge_term_rewards_account_id_wizard_accounts_id_fk": {
+          "name": "knowledge_term_rewards_account_id_wizard_accounts_id_fk",
+          "tableFrom": "knowledge_term_rewards",
+          "tableTo": "wizard_accounts",
+          "columnsFrom": [
+            "account_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "knowledge_terminology": {
+      "name": "knowledge_terminology",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "account_id": {
+          "name": "account_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "creation_key": {
+          "name": "creation_key",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "revision": {
+          "name": "revision",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "details": {
+          "name": "details",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {
+        "knowledge_terminology_creation_unique": {
+          "name": "knowledge_terminology_creation_unique",
+          "columns": [
+            "account_id",
+            "creation_key"
+          ],
+          "isUnique": true
+        }
+      },
+      "foreignKeys": {
+        "knowledge_terminology_account_id_wizard_accounts_id_fk": {
+          "name": "knowledge_terminology_account_id_wizard_accounts_id_fk",
+          "tableFrom": "knowledge_terminology",
+          "tableTo": "wizard_accounts",
+          "columnsFrom": [
+            "account_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    }
+  },
+  "views": {},
+  "enums": {},
+  "_meta": {
+    "schemas": {},
+    "tables": {},
+    "columns": {}
+  },
+  "internal": {
+    "indexes": {}
+  }
+}

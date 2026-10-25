@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "basePath": "public/assets/magnum-opus",
+  "assets": [
+    {
+      "name": "library-background.png",
+      "file": "library-background.png",
+      "width": 1536,
+      "height": 1024,
+      "transparent": false,
+      "bytes": 3494003,
+      "sha256": "e95772f1611ee315b581fc63e560eb0c52ceb2423cf7eaacd7d6bb75e75eb49f",
+      "usage": "Decorative library background, center / cover behind live HTML navigation.",
+      "implementedAs": "public/assets/library-background-v1.png"
+    }
+  ]
+}

@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="sk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#11101a">
+  <title>Mapa poznania · Samostatný systém</title>
+  <link rel="stylesheet" href="../knowledge-reader.css"><link rel="stylesheet" href="style.css?v=linked-pages1">
+  <link rel="stylesheet" href="../opus-theme.css?v=1">
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Mapa poznania">
+        <span class="brand-mark" aria-hidden="true">✳</span>
+        <span>MAPA <b>POZNANIA</b><small>SAMOSTATNÁ LOKÁLNA KNIŽNICA</small></span>
+      </a>
+      <div class="topbar-actions"><span class="offline-tag"><i></i> Iba v tomto počítači</span><a id="open-full-page" class="quiet-button" href="index.html" target="_blank" rel="noopener noreferrer">Otvoriť celú stránku ↗</a></div>
+    </header>
+
+    <section class="intro">
+      <div>
+        <p class="eyebrow">VEDA × STROM ŽIVOTA</p>
+        <h1>Prechádzka<br><em>mapou poznania</em></h1>
+        <p class="intro-copy">Vyber Sefiru, preskúmaj jej interpretačné vedecké prepojenia alebo otvor pojmovú mapu odboru s terminológiou a autormi.</p>
+      </div>
+      <label class="search-box">
+        <span aria-hidden="true">⌕</span>
+        <input id="search" type="search" maxlength="150" autocomplete="off" aria-label="Hľadať v dokumentoch a terminológii" placeholder="Hľadať v dokumentoch a pojmoch od 3 písmen…">
+        <kbd>/</kbd>
+      </label>
+    </section>
+
+    <p id="storage-status" class="storage-status" role="status" aria-live="polite">Otváram samostatné lokálne úložisko…</p>
+    <section id="search-results" class="search-results" aria-label="Zhody v dokumentoch" hidden></section>
+    <section id="game-search-results" class="search-results game-search-results" aria-label="Zhody v hre" aria-live="polite" hidden></section>
+    <section class="workspace" aria-label="Interaktívna mapa">
+      <div class="map-panel">
+        <div class="panel-heading">
+          <div><p class="eyebrow">INTERAKTÍVNY DIAGRAM</p><h2>Desať Sefirot</h2></div>
+          <button id="reset" class="quiet-button" type="button">Zobraziť celý strom</button>
+        </div>
+        <div class="map-navigation" role="group" aria-label="Ovládanie pohľadu na mapu">
+          <button id="map-zoom-out" class="quiet-button" type="button" aria-label="Oddialiť mapu">−</button>
+          <output id="map-zoom-level" aria-live="polite" aria-label="Priblíženie mapy">100 %</output>
+          <button id="map-zoom-in" class="quiet-button" type="button" aria-label="Priblížiť mapu">+</button>
+          <span id="map-navigation-help">Ťahaj mapu · Ctrl + koliesko približuje</span>
+        </div>
+        <div class="diagram-wrap">
+          <svg id="tree" viewBox="0 0 700 740" role="group" tabindex="0" aria-describedby="map-navigation-help map-keyboard-help" aria-label="Strom desiatich Sefirot s vedeckými oblasťami ako interpretačnou vrstvou">
+            <defs>
+              <linearGradient id="pathGlow" x1="0" x2="1">
+                <stop offset="0" stop-color="#9c7a50"/>
+                <stop offset="1" stop-color="#d5bc82"/>
+              </linearGradient>
+            </defs>
+            <g id="paths" aria-hidden="true"></g>
+            <g id="nodes"></g>
+          </svg>
+          <div class="diagram-caption"><span class="legend-dot"></span> Sefira <span class="legend-line"></span> schematická cesta</div>
+        </div>
+        <p id="map-keyboard-help" class="map-keyboard-help">Klávesnica: šípky posúvajú, + / − približujú, Home zobrazí celý strom.</p>
+        <p class="map-note">Kabalistické významy a cesty sa líšia medzi školami. Vedecké polia sú modernou navigačnou analógiou — nie tradičnou doktrínou.</p>
+      </div>
+
+      <aside class="detail-panel" aria-live="polite">
+        <div class="detail-topline"><span id="detail-index" class="index-number">01 / 10</span><span class="interpretive-label">INTERPRETAČNÁ VRSTVA</span></div>
+        <p id="pillar" class="eyebrow">STREDNÝ PILIER</p>
+        <h2 id="detail-title">Keter</h2>
+        <p id="detail-translation" class="translation">Koruna</p>
+        <p id="detail-meaning" class="meaning"></p>
+        <div class="divider"></div>
+        <div class="view-switch" role="tablist" aria-label="Zobrazenie vedeckých súvislostí">
+          <button id="bridge-tab" type="button" role="tab" aria-controls="bridge-view">Vedecký most</button>
+          <button id="overview-tab" type="button" role="tab" aria-controls="overview-view">Prehľad odborov</button>
+          <button id="field-map-tab" type="button" role="tab" aria-controls="field-map-view" hidden>Mapa odboru</button>
+        </div>
+        <section id="bridge-view" class="bridge-view" role="tabpanel" aria-labelledby="bridge-tab">
+          <p class="eyebrow">VEDECKÝ MOST</p>
+          <p id="detail-bridge" class="bridge"></p>
+          <p id="bridge-explanation" class="bridge-explanation"></p>
+          <div id="field-list" class="field-list"></div>
+          <button id="open-field-map" class="overview-link" type="button" hidden>Otvoriť pojmovú mapu odboru <span aria-hidden="true">↗</span></button>
+          <button id="show-overview" class="overview-link" type="button">Prejsť na prehľad odborov <span aria-hidden="true">→</span></button>
+        </section>
+        <section id="overview-view" role="tabpanel" aria-labelledby="overview-tab" hidden>
+          <p class="eyebrow">FOS 2007 · OBLASTI VEDY A TECHNOLÓGIÍ</p>
+          <div class="overview-summary"><strong>6</strong><span>hlavných oblastí<br>+ priečne vrstvy</span></div>
+          <p class="overview-intro">Vyber oblasť a prezri si jej podkategórie a kľúčové pojmy. Označenie Sefiry je interpretačný navigačný návrh.</p>
+          <button id="show-bridge" class="overview-link" type="button"><span aria-hidden="true">←</span> Späť na vedecký most</button>
+        </section>
+        <section id="field-map-view" class="field-map-view" role="tabpanel" aria-labelledby="field-map-tab" hidden>
+          <button id="field-map-back" class="quiet-button" type="button">← Späť na strom</button>
+          <p class="eyebrow">LOKÁLNA POJMOVÁ MAPA</p>
+          <h3 id="map-field-title"></h3>
+          <p class="map-intro">Podkategórie, terminológia a autori sú orientačný začiatok mapy, nie úplný odborný kánon. Nové termíny pridané priamo v hre sa ukladajú pod jej miestnym účtom. Staršie pojmy, autori a samostatná mapa zostávajú v tomto prehliadači.</p>
+          <div id="field-map-diagram"></div>
+          <details class="field-map-list"><summary>Pojmy, popisy a autori v zozname</summary><div id="field-map-content" class="field-map-content"></div></details>
+          <section id="term-assets" class="term-assets" hidden aria-live="polite"></section>
+          <section id="document-reader" class="document-reader" hidden aria-label="Čítačka dokumentu">
+            <div class="reader-heading">
+              <div><p class="eyebrow">ZHODA V DOKUMENTE</p><h4 id="reader-title"></h4></div>
+              <span id="reader-page-label" class="page-label"></span>
+            </div>
+            <div class="reader-controls">
+              <button id="previous-occurrence" type="button">← Predchádzajúci výskyt</button>
+              <span id="occurrence-count" aria-live="polite"></span>
+              <button id="next-occurrence" type="button">Ďalší výskyt →</button>
+            </div>
+            <div class="reader-actions"><a id="download-original" class="quiet-button" hidden>Stiahnuť uložený originál</a><button id="close-text-reader" class="quiet-button" type="button">Zavrieť čítačku</button><span>Označ slovo dvojklikom a vyhľadaj ho v mape.</span></div>
+            <pre id="reader-page" class="reader-page"></pre>
+          </section>
+          <div class="author-tools terminology-tools">
+            <h4>Vlastná terminológia</h4>
+            <p>Pridaj termín a stručný popis do vybranej podkategórie. Po kliknutí na termín môžeš pridať podbublinu aj súbory. Prvé nahratie vytvorí v Grimoári vnorenú cestu priečinkov podľa jej nadradených bublín.</p>
+            <form id="custom-term-form">
+              <label for="term-category">Podkategória termínu</label>
+              <select id="term-category" required></select>
+              <label for="custom-term-name">Termín</label>
+              <input id="custom-term-name" type="text" maxlength="150" required placeholder="Napr. pracovná pamäť">
+              <label for="custom-term-description">Popis termínu</label>
+              <textarea id="custom-term-description" rows="3" maxlength="2000" required placeholder="Vysvetli význam alebo použitie termínu…"></textarea>
+              <button class="overview-link" type="submit">Pridať termín a popis</button>
+            </form>
+            <p id="term-status" class="author-status" aria-live="polite"></p>
+          </div>
+          <div class="author-tools">
+            <h4>Autori v texte</h4>
+            <p>Vlož text alebo prepis z dokumentu. Rozpoznanie porovnáva celé mená s lokálnym zoznamom tohto odboru; ide o textovú zhodu, nie sémantickú analýzu AI.</p>
+            <label for="author-text">Text na kontrolu</label>
+            <textarea id="author-text" rows="4" placeholder="Vlož napríklad citáciu alebo úryvok s menom autora…"></textarea>
+            <button id="detect-authors" class="overview-link" type="button">Rozpoznať a pridať známe mená</button>
+            <p id="author-detection-status" class="author-status" aria-live="polite"></p>
+            <form id="manual-author-form">
+              <label for="manual-author-category">Podkategória autora</label>
+              <select id="manual-author-category" required></select>
+              <label for="manual-author-name">Meno autora</label>
+              <input id="manual-author-name" type="text" maxlength="100" required placeholder="Napr. meno a priezvisko">
+              <button class="overview-link" type="submit">Pridať autora ručne</button>
+            </form>
+          </div>
+        </section>
+        <p id="detail-relation" class="relation"></p>
+      </aside>
+    </section>
+
+    <details id="tree-terminology" class="document-library" hidden>
+      <summary>Vlastná terminológia, poznámky a slovné kolekcie</summary>
+      <p>Nové termíny vytvor v mape vybraného odboru. Za nový termín dostaneš jednorazovo 10 korún po pripojení aspoň troch rôznych dokumentov. Staršie termíny a kolekcie zostávajú zachované bez spätnej odmeny.</p>
+      <p>Viac dokumentov alebo priečinkov vyber pomocou Ctrl + klik. Po zmene zdrojov použi „Uložiť zdroje a potvrdiť odmenu“. Odpojenie zdroja originál nevymaže ani neobnoví už pripísanú odmenu.</p>
+      <button id="refresh-terminology" type="button">Obnoviť terminológiu</button>
+      <p id="terminology-status" role="status"></p>
+      <div id="tree-terminology-content"></div>
+    </details>
+    <section class="document-library" aria-labelledby="library-title">
+      <div class="catalog-heading">
+        <div><p class="eyebrow">SÚKROMNÉ LOKÁLNE ÚLOŽISKO</p><h2 id="library-title">Dokumenty v aplikácii</h2></div>
+        <span id="document-count" class="result-count">0 dokumentov</span>
+      </div>
+      <p class="library-note">Pridaj PDF, DOCX, TXT, Markdown, CSV, LOG alebo fotografie PNG, JPG a WebP (najviac 15 MiB na súbor). Prepis a OCR prebiehajú lokálne. PDF zachová skutočné čísla strán. Word a súvislý text majú iba výslovne označené virtuálne strany; text s oddeľovačmi form-feed zachová oddelené časti. Originály a mapa sa ukladajú do samostatného úložiska tohto prehliadača. Vyhľadávanie páruje slová, nie význam pomocou AI.</p>
+      <div class="library-actions"><label class="upload-control" for="document-upload">Vybrať dokumenty <input id="document-upload" type="file" accept=".pdf,.docx,.txt,.md,.markdown,.csv,.log,.png,.jpg,.jpeg,.webp" multiple></label><button id="cancel-upload" class="quiet-button" type="button" hidden>Zrušiť spracovanie</button><button id="export-backup" class="quiet-button" type="button">Exportovať zálohu</button><label class="quiet-button backup-control" for="import-backup">Pridať zo zálohy<input id="import-backup" type="file" accept=".json,application/json" hidden></label></div>
+      <p id="upload-status" class="upload-status" aria-live="polite"></p>
+      <p id="backup-status" class="upload-status" aria-live="polite"></p>
+      <div id="document-list" class="document-list"></div>
+    </section>
+
+    <section id="catalog-section" class="catalog-section" aria-labelledby="catalog-title" hidden>
+      <div class="catalog-heading">
+        <div><p class="eyebrow">PODKATEGÓRIE A KĽÚČOVÉ POJMY</p><h2 id="catalog-title">Prehľad odborov</h2></div>
+        <span id="result-count" class="result-count">6 hlavných polí</span>
+      </div>
+      <div id="catalog" class="catalog-grid"></div>
+      <p id="no-results" class="no-results" hidden>Nenašiel som zhodu. Skús iný názov alebo pojem.</p>
+    </section>
+
+    <footer>
+      <span>Originály samostatnej mapy a staršie pojmy ostávajú v tomto prehliadači; zálohuj ich exportom mapy. Nové termíny vytvorené priamo v hre patria miestnemu hernému účtu a úplnej zálohe hry.</span>
+      <span><a href="https://interoperable-europe.ec.europa.eu/collection/eu-semantic-interoperability-catalogue/solution/field-science-and-technology-classification" target="_blank" rel="noreferrer">FOS 2007</a> · <a href="https://www.sefaria.org/Sefer_Yetzirah" target="_blank" rel="noreferrer">Sefer Jecira</a></span>
+    </footer>
+  </main>
+  <dialog id="term-edit-dialog" class="term-edit-dialog" aria-labelledby="term-edit-title">
+    <form id="term-edit-form">
+      <p class="eyebrow">VLASTNÁ TERMINOLÓGIA</p><h2 id="term-edit-title">Upraviť a presunúť pojem</h2>
+      <p id="term-edit-origin" class="term-edit-origin"></p>
+      <p class="map-intro">Názov slúži na vyhľadávanie zdrojov. Pri premenovaní sa zhody vyhľadajú znova; pôvodné dokumenty zostanú zachované.</p>
+      <label for="term-edit-name">Názov pojmu</label><input id="term-edit-name" type="text" maxlength="150" required>
+      <label for="term-edit-description">Popis (voliteľný)</label><textarea id="term-edit-description" rows="4" maxlength="2000"></textarea>
+      <label for="term-edit-field">Cieľový odbor</label><select id="term-edit-field" required></select>
+      <label for="term-edit-category">Cieľová podkategória</label><select id="term-edit-category" required></select>
+      <p id="term-edit-status" role="status" aria-live="polite"></p>
+      <div class="term-edit-actions"><button id="term-edit-cancel" class="quiet-button" type="button">Zrušiť</button><button id="term-edit-save" class="quiet-button" type="submit">Uložiť zmeny pojmu</button></div>
+    </form>
+  </dialog>
+  <script src="catalog.js?v=1"></script><script src="../ocr.js"></script><script src="../knowledge-extract.js"></script><script src="../knowledge-model.js"></script><script src="../knowledge-reader.js"></script><script src="store.js"></script><script src="../knowledge-game-search.js"></script><script src="viewport.js"></script><script src="field-map.js?v=nested-bubbles1"></script><script src="learning.js?v=1"></script>  <script src="app.js?v=nested-bubbles1"></script>
+</body>
+</html>

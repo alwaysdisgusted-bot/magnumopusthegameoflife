@@ -1,0 +1,11 @@
+import { readFileSync, writeFileSync } from 'node:fs';
+const source=readFileSync(new URL('../public/model.js',import.meta.url),'utf8');
+const catalog=readFileSync(new URL('../public/knowledge-system/catalog.js',import.meta.url),'utf8');
+const catalogStart=catalog.indexOf("'use strict';",catalog.indexOf('function () {'));
+if(catalogStart<0||!catalog.endsWith('});\n'))throw new Error('Unexpected knowledge catalogue wrapper.');
+writeFileSync(new URL('../server/knowledge-catalog.cjs',import.meta.url),catalog);
+writeFileSync(new URL('../server/knowledge-catalog.mjs',import.meta.url),'const KnowledgeCatalog = (function () {\n'+catalog.slice(catalogStart,-4)+'})();\nexport default KnowledgeCatalog;\n');
+const start=source.indexOf("  'use strict';",source.indexOf('})(typeof globalThis'));
+if(start<0||!source.endsWith('});\n'))throw new Error('Unexpected game model wrapper.');
+writeFileSync(new URL('../server/game-model.cjs',import.meta.url),source);
+writeFileSync(new URL('../server/game-model.mjs',import.meta.url),'import KnowledgeCatalog from "./knowledge-catalog.mjs";\nconst GameModel = (function () {\n'+source.slice(start,-4)+'})();\nexport default GameModel;\n');

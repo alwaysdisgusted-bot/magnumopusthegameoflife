@@ -1,0 +1,137 @@
+/* Illustration stays behind the interface; transparency never affects text. */
+#app[data-theme='dark'] {
+  --ink: #f7efdf;
+  --muted: #d4c7d9;
+  --faint: #c2b0c9;
+  --accent: #d4b4ed;
+  --accent-dark: #e5c9fb;
+  --line: rgb(226 198 151 / 27%);
+  --paper: #292331;
+  --sanctuary-glass: rgb(29 23 35 / 75%);
+  --reading-glass: rgb(29 23 35 / 67%);
+  --grimoire-art: url('/knowledge/images/grimoire-table-background-v2.png');
+  isolation: isolate;
+  position: relative;
+  background: transparent;
+}
+
+#app[data-theme='dark']::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgb(17 13 25 / 28%), rgb(20 15 27 / 45%)),
+    var(--grimoire-art) center / cover no-repeat;
+}
+
+#app[data-theme='dark'] .app-shell { background: transparent; }
+
+#app[data-theme='dark'] :is(.masthead, .workspace-bar, .footer) {
+  background: rgb(26 20 32 / 68%);
+  border-color: var(--line);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+#app[data-theme='dark'] .masthead { padding-inline: 20px; }
+#app[data-theme='dark'] .workspace-bar { padding: 8px 14px 0; border-radius: 10px 10px 0 0; }
+#app[data-theme='dark'] :is(.heading-note, .eyebrow, .wordmark) { color: #ecdcf1; }
+
+/* Decorative surroundings show through; document and editing surfaces do not. */
+#app[data-theme='dark'] .book-workspace {
+  background: var(--sanctuary-glass);
+  border-color: var(--line);
+  box-shadow: 0 12px 32px rgb(9 5 14 / 28%);
+}
+#app[data-theme='dark'] :is(.outline, .page-toolbar, .library-catalog, .grimoire-workbench) {
+  background: rgb(30 24 37 / 82%);
+  border-color: var(--line);
+}
+#app[data-theme='dark'] .page-content { background: rgb(35 28 42 / 60%); }
+#app[data-theme='dark'] .grimoire-workbench { border-radius: 12px; }
+#app[data-theme='dark'] :is(.reader, .reader-content, .reader-editor, .reader-editor-panel, .rich-document, .current-location, .results, .auth-card, .organizer-dialog, .workbench-pane) {
+  background: #292331;
+  color: var(--ink);
+  border-color: #806a8d;
+}
+#app[data-theme='dark'] :is(.reader-content, .rich-document .tiptap) { line-height: 1.75; }
+#app[data-theme='dark'] :is(.search-form, .creation-controls input, .organizer-dialog input, .organizer-dialog select, .reader-mode, .workspace-badge) {
+  background: #302638;
+  color: var(--ink);
+  border-color: #9f86ad;
+}
+#app[data-theme='dark'] .grimoire-section-nav {
+  padding: 10px 6px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: rgb(26 20 32 / 88%);
+}
+#app[data-theme='dark'] .grimoire-section-nav [data-grimoire-view] {
+  background: #302638;
+  color: #f7efdf;
+  border-color: #806a8d;
+}
+#app[data-theme='dark'] .grimoire-section-nav [aria-pressed='true'] {
+  background: #59416c;
+  color: #fff4da;
+  border-color: #e8c883;
+}
+#app[data-theme='dark'] :is(button, a, input, select, textarea, [tabindex]):focus-visible {
+  outline: 3px solid #f5d78d;
+  outline-offset: 3px;
+}
+
+/* One glass layer gives the reading area 33% transparency without fading content. */
+#app[data-theme='dark'].has-screen-pager .book-workspace { background: transparent; box-shadow: none; }
+#app[data-theme='dark'].has-screen-pager .reading-pane { background: var(--reading-glass); }
+#app[data-theme='dark'].has-screen-pager .reading-pane :is(.page-toolbar, .page-content, .outline, .current-location, .reader, .reader-content, .grimoire-reader-controls, .reader-empty) { background: transparent; }
+#app[data-theme='dark'] #grimoire-editing-screen > .grimoire-workbench { background: transparent; }
+#app[data-theme='dark'] #grimoire-editing-screen .workbench-pane { background: var(--reading-glass); }
+#app[data-theme='dark'] #grimoire-editing-screen .scratch-start { background: transparent; }
+
+/* The supplied book frames the reader; a quiet parchment layer keeps text off the spine. */
+#app[data-theme='dark'].has-screen-pager .reading-pane :is(#reader, .reader-empty) {
+  --ink: #38261c;
+  --muted: #694b36;
+  --accent-dark: #684063;
+  --line: rgb(87 49 30 / 28%);
+  box-sizing: border-box;
+  padding: clamp(26px, 4vw, 44px) clamp(22px, 4.5vw, 50px) clamp(38px, 5.5vw, 62px);
+  border: 0;
+  border-radius: 12px;
+  background: #d2a16d url('/knowledge/images/grimoire-reader-book-v1.png') center / 100% 100% no-repeat;
+  color: var(--ink);
+  box-shadow: 0 5px 18px #130b0759;
+  overflow: hidden;
+}
+#app[data-theme='dark'].has-screen-pager #reader-content,
+#app[data-theme='dark'].has-screen-pager .reader-empty .welcome-art {
+  box-sizing: border-box;
+  padding: 14px;
+  border: 1px solid rgb(123 79 37 / 18%);
+  border-radius: 4px;
+  background: rgb(255 235 194 / 94%);
+  color: var(--ink);
+  box-shadow: 0 1px 7px #5930181a;
+}
+#app[data-theme='dark'].has-screen-pager .reader-empty .welcome-art { height: 100%; overflow: auto; }
+#app[data-theme='dark'].has-screen-pager .reader-empty .welcome-art :is(h3, h4, p) { color: var(--ink); }
+#app[data-theme='dark'].has-screen-pager #reader-content.is-paged:not(.has-pages) { padding-inline: 0; }
+#app[data-theme='dark'].has-screen-pager #reader-content mark { background: #f1cf65; color: #3b2817; }
+#app[data-theme='dark'].has-screen-pager #reader-content .selected-search-match { outline-color: #784581; }
+
+@media (max-width: 650px) {
+  #app[data-theme='dark']::before { background-position: center; }
+  #app[data-theme='dark'] .masthead { padding-inline: 10px; }
+  #app[data-theme='dark'] .workspace-bar { padding-inline: 8px; }
+}
+
+@media (prefers-reduced-transparency: reduce), (prefers-contrast: more) {
+  #app[data-theme='dark'] { --sanctuary-glass: #211b29; --reading-glass: #211b29; }
+  #app[data-theme='dark'] :is(.masthead, .workspace-bar, .footer, .outline, .page-toolbar, .library-catalog, .grimoire-workbench, .page-content, .grimoire-section-nav) {
+    background: #211b29;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+}

@@ -1,0 +1,804 @@
+{
+  "version": "6",
+  "dialect": "sqlite",
+  "id": "37cbc670-f373-45ba-9d7e-db45e30111f2",
+  "prevId": "00000000-0000-0000-0000-000000000000",
+  "tables": {
+    "auth_attempts": {
+      "name": "auth_attempts",
+      "columns": {
+        "bucket_key": {
+          "name": "bucket_key",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "window_started_at": {
+          "name": "window_started_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "attempts": {
+          "name": "attempts",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "wizard_accounts": {
+      "name": "wizard_accounts",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "owner_id": {
+          "name": "owner_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "normalized_name": {
+          "name": "normalized_name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "display_name": {
+          "name": "display_name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "password_hash": {
+          "name": "password_hash",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {
+        "wizard_accounts_owner_id_unique": {
+          "name": "wizard_accounts_owner_id_unique",
+          "columns": [
+            "owner_id"
+          ],
+          "isUnique": true
+        },
+        "wizard_accounts_normalized_name_unique": {
+          "name": "wizard_accounts_normalized_name_unique",
+          "columns": [
+            "normalized_name"
+          ],
+          "isUnique": true
+        }
+      },
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "wizard_saves": {
+      "name": "wizard_saves",
+      "columns": {
+        "account_id": {
+          "name": "account_id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "revision": {
+          "name": "revision",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "object_key": {
+          "name": "object_key",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "wizard_saves_account_id_wizard_accounts_id_fk": {
+          "name": "wizard_saves_account_id_wizard_accounts_id_fk",
+          "tableFrom": "wizard_saves",
+          "tableTo": "wizard_accounts",
+          "columnsFrom": [
+            "account_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "wizard_sessions": {
+      "name": "wizard_sessions",
+      "columns": {
+        "token_hash": {
+          "name": "token_hash",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "account_id": {
+          "name": "account_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "owner_id": {
+          "name": "owner_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "csrf_value": {
+          "name": "csrf_value",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "expires_at": {
+          "name": "expires_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {
+        "wizard_sessions_account_idx": {
+          "name": "wizard_sessions_account_idx",
+          "columns": [
+            "account_id"
+          ],
+          "isUnique": false
+        },
+        "wizard_sessions_expiry_idx": {
+          "name": "wizard_sessions_expiry_idx",
+          "columns": [
+            "expires_at"
+          ],
+          "isUnique": false
+        }
+      },
+      "foreignKeys": {
+        "wizard_sessions_account_id_wizard_accounts_id_fk": {
+          "name": "wizard_sessions_account_id_wizard_accounts_id_fk",
+          "tableFrom": "wizard_sessions",
+          "tableTo": "wizard_accounts",
+          "columnsFrom": [
+            "account_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "academy_channels": {
+      "name": "academy_channels",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "room_id": {
+          "name": "room_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "name": {
+          "name": "name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {
+        "academy_channels_room_idx": {
+          "name": "academy_channels_room_idx",
+          "columns": [
+            "room_id"
+          ],
+          "isUnique": false
+        }
+      },
+      "foreignKeys": {
+        "academy_channels_room_id_academy_rooms_id_fk": {
+          "name": "academy_channels_room_id_academy_rooms_id_fk",
+          "tableFrom": "academy_channels",
+          "tableTo": "academy_rooms",
+          "columnsFrom": [
+            "room_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "academy_join_attempts": {
+      "name": "academy_join_attempts",
+      "columns": {
+        "account_id": {
+          "name": "account_id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "window_start": {
+          "name": "window_start",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "attempts": {
+          "name": "attempts",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": 0
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "academy_join_attempts_account_id_wizard_accounts_id_fk": {
+          "name": "academy_join_attempts_account_id_wizard_accounts_id_fk",
+          "tableFrom": "academy_join_attempts",
+          "tableTo": "wizard_accounts",
+          "columnsFrom": [
+            "account_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "academy_members": {
+      "name": "academy_members",
+      "columns": {
+        "room_id": {
+          "name": "room_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "account_id": {
+          "name": "account_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "joined_at": {
+          "name": "joined_at",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {
+        "academy_members_account_idx": {
+          "name": "academy_members_account_idx",
+          "columns": [
+            "account_id"
+          ],
+          "isUnique": false
+        }
+      },
+      "foreignKeys": {
+        "academy_members_room_id_academy_rooms_id_fk": {
+          "name": "academy_members_room_id_academy_rooms_id_fk",
+          "tableFrom": "academy_members",
+          "tableTo": "academy_rooms",
+          "columnsFrom": [
+            "room_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "academy_members_account_id_wizard_accounts_id_fk": {
+          "name": "academy_members_account_id_wizard_accounts_id_fk",
+          "tableFrom": "academy_members",
+          "tableTo": "wizard_accounts",
+          "columnsFrom": [
+            "account_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {
+        "academy_members_room_id_account_id_pk": {
+          "columns": [
+            "room_id",
+            "account_id"
+          ],
+          "name": "academy_members_room_id_account_id_pk"
+        }
+      },
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "academy_messages": {
+      "name": "academy_messages",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "channel_id": {
+          "name": "channel_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "author_id": {
+          "name": "author_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "body": {
+          "name": "body",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {
+        "academy_messages_channel_time_idx": {
+          "name": "academy_messages_channel_time_idx",
+          "columns": [
+            "channel_id",
+            "created_at"
+          ],
+          "isUnique": false
+        }
+      },
+      "foreignKeys": {
+        "academy_messages_channel_id_academy_channels_id_fk": {
+          "name": "academy_messages_channel_id_academy_channels_id_fk",
+          "tableFrom": "academy_messages",
+          "tableTo": "academy_channels",
+          "columnsFrom": [
+            "channel_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "academy_messages_author_id_wizard_accounts_id_fk": {
+          "name": "academy_messages_author_id_wizard_accounts_id_fk",
+          "tableFrom": "academy_messages",
+          "tableTo": "wizard_accounts",
+          "columnsFrom": [
+            "author_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "academy_rooms": {
+      "name": "academy_rooms",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "name": {
+          "name": "name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "owner_account_id": {
+          "name": "owner_account_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "invite_hash": {
+          "name": "invite_hash",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {
+        "academy_rooms_invite_hash_idx": {
+          "name": "academy_rooms_invite_hash_idx",
+          "columns": [
+            "invite_hash"
+          ],
+          "isUnique": true
+        }
+      },
+      "foreignKeys": {
+        "academy_rooms_owner_account_id_wizard_accounts_id_fk": {
+          "name": "academy_rooms_owner_account_id_wizard_accounts_id_fk",
+          "tableFrom": "academy_rooms",
+          "tableTo": "wizard_accounts",
+          "columnsFrom": [
+            "owner_account_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "workspace_pages": {
+      "name": "workspace_pages",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "owner_account_id": {
+          "name": "owner_account_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "room_id": {
+          "name": "room_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "title": {
+          "name": "title",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "body": {
+          "name": "body",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": "''"
+        },
+        "revision": {
+          "name": "revision",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": 1
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {
+        "workspace_pages_owner_idx": {
+          "name": "workspace_pages_owner_idx",
+          "columns": [
+            "owner_account_id"
+          ],
+          "isUnique": false
+        },
+        "workspace_pages_room_idx": {
+          "name": "workspace_pages_room_idx",
+          "columns": [
+            "room_id"
+          ],
+          "isUnique": false
+        }
+      },
+      "foreignKeys": {
+        "workspace_pages_owner_account_id_wizard_accounts_id_fk": {
+          "name": "workspace_pages_owner_account_id_wizard_accounts_id_fk",
+          "tableFrom": "workspace_pages",
+          "tableTo": "wizard_accounts",
+          "columnsFrom": [
+            "owner_account_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "workspace_pages_room_id_academy_rooms_id_fk": {
+          "name": "workspace_pages_room_id_academy_rooms_id_fk",
+          "tableFrom": "workspace_pages",
+          "tableTo": "academy_rooms",
+          "columnsFrom": [
+            "room_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "workspace_tasks": {
+      "name": "workspace_tasks",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "owner_account_id": {
+          "name": "owner_account_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "room_id": {
+          "name": "room_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "title": {
+          "name": "title",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "description": {
+          "name": "description",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": "''"
+        },
+        "status": {
+          "name": "status",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": "'todo'"
+        },
+        "assignee_id": {
+          "name": "assignee_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "revision": {
+          "name": "revision",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": 1
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {
+        "workspace_tasks_owner_idx": {
+          "name": "workspace_tasks_owner_idx",
+          "columns": [
+            "owner_account_id"
+          ],
+          "isUnique": false
+        },
+        "workspace_tasks_room_idx": {
+          "name": "workspace_tasks_room_idx",
+          "columns": [
+            "room_id"
+          ],
+          "isUnique": false
+        }
+      },
+      "foreignKeys": {
+        "workspace_tasks_owner_account_id_wizard_accounts_id_fk": {
+          "name": "workspace_tasks_owner_account_id_wizard_accounts_id_fk",
+          "tableFrom": "workspace_tasks",
+          "tableTo": "wizard_accounts",
+          "columnsFrom": [
+            "owner_account_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "workspace_tasks_room_id_academy_rooms_id_fk": {
+          "name": "workspace_tasks_room_id_academy_rooms_id_fk",
+          "tableFrom": "workspace_tasks",
+          "tableTo": "academy_rooms",
+          "columnsFrom": [
+            "room_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "workspace_tasks_assignee_id_wizard_accounts_id_fk": {
+          "name": "workspace_tasks_assignee_id_wizard_accounts_id_fk",
+          "tableFrom": "workspace_tasks",
+          "tableTo": "wizard_accounts",
+          "columnsFrom": [
+            "assignee_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "set null",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    }
+  },
+  "views": {},
+  "enums": {},
+  "_meta": {
+    "schemas": {},
+    "tables": {},
+    "columns": {}
+  },
+  "internal": {
+    "indexes": {}
+  }
+}
